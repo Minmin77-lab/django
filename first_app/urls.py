@@ -1,11 +1,6 @@
-from django.urls import path, include 
-import first_app 
-
-from .views import hello
-
+from django.urls import path
+from .views import root
 
 urlpatterns = [
-   # path('admin/', admin.site.urls),
-    path('hello/', hello),
-    path('hello/', hello),
+    path('', root),
 ]
