@@ -124,12 +124,6 @@ class Tickets(models.Model):
     valid_until = models.DateTimeField('Действителен до')
     usage_time = models.DateTimeField('Время использования', null=True, blank=True)
     
-    def save(self, *args, **kwargs):
-        # Автоматически рассчитывает valid_until на основе validity_duration из ticket_type
-        if not self.valid_until and self.ticket_type:
-            self.valid_until = timezone.now() + timedelta(days=self.ticket_type.validity_duration)
-        super().save(*args, **kwargs)
-    
     def __str__(self):
         return f"Билет #{self.id} - {self.user.surname} {self.user.name}"
     
