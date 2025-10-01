@@ -3,105 +3,79 @@ from django.utils import timezone
 from datetime import timedelta
 
 class Users(models.Model):
-    first_name = models.CharField('Имя', max_length=80)
-    last_name = models.CharField('Фамилия', max_length=60)
+    name = models.CharField(verbose_name='Имя', max_length=20)
+    surname = models.CharField('Фамилия', max_length=25)
+    birthday = models.DateField('Дата рождения')
     phone_number = models.CharField('Номер телефона', max_length=20)
     email = models.EmailField('e-mail', max_length=100, unique=True)
-    password_hash = models.CharField('Пароль', max_length=255)
-    birth_date = models.DateField('Дата рождения')
+    hash_password = models.CharField('Пароль', max_length=255)
     created_at = models.DateTimeField('Дата и время регистрации')
     
     def __str__(self):
-        return f"{self.last_name} {self.first_name}"
+        return f"{self.surname} {self.name}"
     
     class Meta: 
         verbose_name = "Пользователь"
         verbose_name_plural = "Пользователи"
-        ordering = ["last_name", "first_name"]
+        ordering = ["surname", "name"]
         indexes = [
-            models.Index(fields=["last_name"])
+            models.Index(fields=["surname"])
         ]
 
-class Position(models.Model):
+class Staff(models.Model):
     POSITION_CHOICES = [
         ('operator', 'Оператор'),
         ('administrator', 'Администратор'),
-        ('manager', 'Менеджер'),
-        ('technician', 'Техник'),
     ]
     
-    name = models.CharField('Название должности', max_length=50, choices=POSITION_CHOICES)
-    
-    def __str__(self):
-        return self.get_name_display()
-    
-    class Meta:
-        verbose_name = "Должность"
-        verbose_name_plural = "Должности"
-
-class Staff(models.Model):
-    first_name = models.CharField('Имя', max_length=80)
-    last_name = models.CharField('Фамилия', max_length=60)
-    position_id = models.ForeignKey(Position, on_delete=models.CASCADE, verbose_name='Должность')
+    name = models.CharField('Имя', max_length=50)
+    surname = models.CharField('Фамилия', max_length=50)
+    position = models.CharField('Должность', max_length=50, choices=POSITION_CHOICES)  
     phone_number = models.CharField('Номер телефона', max_length=20)
-    passport = models.CharField('Паспорт', max_length=15, unique=True)
+    passport = models.CharField('Паспорт', max_length=13, unique=True)
     
     def __str__(self):
-        return f"{self.last_name} {self.first_name}"
+        return f"{self.name} {self.surname} - {self.get_position_display()}"
     
     class Meta:
         verbose_name = "Сотрудник"
         verbose_name_plural = "Сотрудники"
-        ordering = ["last_name", "first_name"]
+        ordering = ["surname", "name"]
+        indexes = [
+            models.Index(fields=["position"])
+        ]
 
 class Attractions(models.Model):
     MIN_HEIGHT_CHOICES = [
         (90, '90 см'),
-        (100, '100 см'),
-        (110, '110 см'),
         (120, '120 см'),
-        (130, '130 см'),
-        (140, '140 см'),
         (150, '150 см'),
+        (155, '155 см'), 
+        (165, '165 см')       
     ]
     MAX_HEIGHT_CHOICES = [
-        (140, '140 см'),
-        (150, '150 см'),
-        (160, '160 см'),
-        (170, '170 см'),
-        (180, '180 см'),
+        (120, '120 см'),
         (190, '190 см'),
-        (200, '200 см'),
+        (165, '165 см')      
     ]
     MIN_AGE_CHOICES = [
         (3, '3 года'),
         (6, '6 лет'),
-        (8, '8 лет'),
-        (10, '10 лет'),
-        (12, '12 лет'),
         (14, '14 лет'),
         (16, '16 лет'),
-        (18, '18 лет'),
+        (18, '18 лет')      
     ]
     CAPACITY_CHOICES = [
-        (1, '1 человек'),
-        (2, '2 человека'),
-        (4, '4 человека'),
-        (6, '6 человек'),
-        (8, '8 человек'),
         (10, '10 человек'),
         (15, '15 человек'),
-        (20, '20 человек'),
+        (20, '20 человек')     
     ]
     DURATION_CHOICES = [
-        (60, '1 минута'),
-        (120, '2 минуты'),
-        (180, '3 минуты'),
-        (240, '4 минуты'),
-        (300, '5 минут'),
-        (420, '7 минут'),
-        (600, '10 минут'),
-        (900, '15 минут'),
+        (3, '3 минуты'),
+        (6, '6 минут'),
+        (10, '10 минут'),
+        (8, '8 минут'),
+        (15, '15 минут')      
     ]
 
     name = models.CharField('Название', max_length=100, unique=True)
@@ -110,10 +84,12 @@ class Attractions(models.Model):
     min_age = models.IntegerField('Минимальный возраст', choices=MIN_AGE_CHOICES)
     activity_status = models.BooleanField('Статус активности', default=True)
     capacity = models.IntegerField('Вместимость (чел)', choices=CAPACITY_CHOICES)
-    duration_seconds = models.IntegerField('Продолжительность (сек)', choices=DURATION_CHOICES)
+    duration_minutes = models.IntegerField('Продолжительность (мин)', choices=DURATION_CHOICES, default=5)  
+    staff = models.ForeignKey(Staff, on_delete=models.SET_NULL, null=True, blank=True, verbose_name='Ответственный сотрудник')
     
     def __str__(self):
-        return self.name
+        staff_name = f" - {self.staff}" if self.staff else ""
+        return f"{self.name}{staff_name}"
     
     class Meta:
         verbose_name = "Аттракцион"
@@ -126,12 +102,10 @@ class TicketTypes(models.Model):
         ('adult', 'Взрослый'),
         ('family', 'Семейный'),
         ('student', 'Студенческий'),
-        ('vip', 'VIP'),
-        ('season', 'Сезонный'),
-        ('other', 'Другое'),
+        ('other', 'Другое')  
     ]
     
-    name = models.CharField('Название', max_length=80, choices=NAME_CHOICES)
+    name = models.CharField('Название', max_length=50, choices=NAME_CHOICES)
     price = models.DecimalField('Цена', max_digits=10, decimal_places=2)
     validity_duration = models.IntegerField('Срок действия (дни)', default=1)
     
@@ -148,6 +122,7 @@ class Tickets(models.Model):
     ticket_type = models.ForeignKey(TicketTypes, on_delete=models.CASCADE, verbose_name='Тип билета')
     purchase_date = models.DateTimeField('Дата покупки', auto_now_add=True)
     valid_until = models.DateTimeField('Действителен до')
+    usage_time = models.DateTimeField('Время использования', null=True, blank=True)
     
     def save(self, *args, **kwargs):
         # Автоматически рассчитывает valid_until на основе validity_duration из ticket_type
@@ -156,7 +131,7 @@ class Tickets(models.Model):
         super().save(*args, **kwargs)
     
     def __str__(self):
-        return f"Билет #{self.id} - {self.user.last_name} {self.user.first_name}"
+        return f"Билет #{self.id} - {self.user.surname} {self.user.name}"
     
     class Meta:
         verbose_name = "Билет"
