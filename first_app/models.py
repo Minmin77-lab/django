@@ -5,10 +5,10 @@ from datetime import timedelta
 class Users(models.Model):
     name = models.CharField(verbose_name='Имя', max_length=20)
     surname = models.CharField('Фамилия', max_length=25)
-    birthday = models.DateField('Дата рождения')
+    birth_date = models.DateField('Дата рождения')
     phone_number = models.CharField('Номер телефона', max_length=20)
     email = models.EmailField('e-mail', max_length=100, unique=True)
-    hash_password = models.CharField('Пароль', max_length=255)
+    password_hash = models.CharField('Пароль', max_length=255)
     created_at = models.DateTimeField('Дата и время регистрации')
     
     def __str__(self):
