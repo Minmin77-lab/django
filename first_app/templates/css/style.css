@@ -1,0 +1,59 @@
+header{
+    margin: 0;
+    padding: 0;
+    background-color: #CBE8FF;
+    border-bottom-left-radius: 150px;
+    border-bottom-right-radius: 150px;
+    display: flex;
+    
+}
+
+
+.cormorant-infant-uniquifier {
+  font-family: "Cormorant Infant", serif;
+  font-optical-sizing: auto;
+  font-weight: weight;
+  font-style: normal;
+}
+
+
+.name{
+    display: inline;
+    margin: 30px 800px 30px 10px;
+}
+
+.container{
+    margin: 0 auto;
+    min-width: 1700px;
+    justify-content: space-between;
+}
+
+.header-inner{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 150px;
+}
+
+li{
+    margin-right: 35px;
+}
+
+.menu-list{
+    display: flex;
+}
+
+.menu{
+    height: 50px;
+}
+
+.logo{
+    height: 80px;
+    width: 80px;
+}
+a{
+    font-family: "Cormorant Infant", serif;
+    text-decoration: none;
+    color: #000;
+    font-weight: 400px;
+} 
