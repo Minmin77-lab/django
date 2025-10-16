@@ -1,59 +1,393 @@
-header{
+* {
+    box-sizing: border-box;
+}
+
+header {
     margin: 0;
     padding: 0;
     background-color: #CBE8FF;
     border-bottom-left-radius: 150px;
     border-bottom-right-radius: 150px;
-    display: flex;
-    
+    overflow: hidden; /* Чтобы скругления работали правильно */
 }
-
 
 .cormorant-infant-uniquifier {
-  font-family: "Cormorant Infant", serif;
-  font-optical-sizing: auto;
-  font-weight: weight;
-  font-style: normal;
+    font-family: "Cormorant Infant", serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
 }
 
-
-.name{
-    display: inline;
-    margin: 30px 800px 30px 10px;
-}
-
-.container{
+.container {
+    max-width: 95%;
     margin: 0 auto;
-    min-width: 1700px;
-    justify-content: space-between;
+    padding: 0 20px;
 }
 
-.header-inner{
+.header-inner {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    height: 150px;
+    min-height: 150px;
+    gap: 30px;
 }
 
-li{
-    margin-right: 35px;
-}
-
-.menu-list{
+/* Блок логотипа и названия */
+.header-left {
     display: flex;
+    align-items: center;
+    gap: 20px;
+    flex-shrink: 0;
+    min-width: 0; /* Позволяет сжиматься */
 }
 
-.menu{
-    height: 50px;
-}
-
-.logo{
+.logo {
     height: 80px;
     width: 80px;
+    transition: transform 0.3s ease;
+    flex-shrink: 0; /* Не сжимать логотип */
 }
-a{
+
+.name {
+    font-size: clamp(1.2rem, 2.5vw, 2rem); /* Адаптивный размер шрифта */
+    margin: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis; /* Многоточие если не помещается */
+    flex-shrink: 1; /* Может сжиматься при необходимости */
+}
+
+/* Меню */
+.menu {
+    flex-shrink: 1;
+}
+
+.menu-list {
+    display: flex;
+    gap: clamp(15px, 3vw, 35px); /* Адаптивные отступы */
+    padding: 0;
+    margin: 0;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+}
+
+.menu-list li {
+    list-style: none;
+}
+
+a {
     font-family: "Cormorant Infant", serif;
     text-decoration: none;
     color: #000;
-    font-weight: 400px;
-} 
+    font-weight: 400;
+    font-size: clamp(1rem, 1.5vw, 1.5rem); /* Адаптивный размер шрифта */
+    transition: color 0.3s ease;
+    white-space: nowrap;
+}
+
+/* Интерактивность */
+a:hover {
+    color: #2a9d8f;
+}
+
+.logo:hover {
+    transform: scale(1.05);
+}
+
+/* Адаптивность для планшетов */
+@media (max-width: 1024px) {
+    .header-inner {
+        gap: 20px;
+        min-height: 120px;
+    }
+    
+    .logo {
+        height: 60px;
+        width: 60px;
+    }
+    
+    .container {
+        max-width: 98%;
+    }
+}
+
+/* Адаптивность для мобильных */
+@media (max-width: 768px) {
+    .header-inner {
+        flex-direction: column;
+        text-align: center;
+        gap: 15px;
+        padding: 20px 0;
+        min-height: auto;
+    }
+    
+    .header-left {
+        justify-content: center;
+        width: 100%;
+    }
+    
+    .name {
+        white-space: normal; /* Разрешаем перенос на мобильных */
+        text-overflow: clip;
+    }
+    
+    .menu-list {
+        justify-content: center;
+    }
+    
+    header {
+        border-bottom-left-radius: 80px;
+        border-bottom-right-radius: 80px;
+    }
+}
+
+/* Для очень маленьких экранов */
+@media (max-width: 480px) {
+    .header-left {
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    .menu-list {
+        gap: 10px;
+    }
+    
+    .container {
+        padding: 0 15px;
+    }
+}
+
+/* Защита от очень больших экранов */
+@media (min-width: 2000px) {
+    .container {
+        max-width: 1900px;
+    }
+}
+
+
+/* Общие стили для всего документа */
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* Основной контент - занимает все доступное пространство */
+main {
+    flex: 1 0 auto;
+}
+
+/* Стили для футера */
+footer {
+    background-color: #CBE8FF;
+    padding: 50px 0;
+    border-top-left-radius: 150px;
+    border-top-right-radius: 150px;
+    flex-shrink: 0; /* Не сжимается */
+    margin-top: auto; /* Прижимает к низу */
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 40px;
+    flex-wrap: wrap;
+}
+
+.footer-contacts {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    flex: 1;
+    min-width: 300px;
+}
+
+.contact-item h3 {
+    font-family: "Cormorant Infant", serif;
+    font-size: clamp(1.3rem, 2vw, 1.8rem);
+    font-weight: 600;
+    margin: 0 0 10px 0;
+    color: #000;
+}
+
+.contact-item p {
+    font-family: "Cormorant Infant", serif;
+    font-size: clamp(1.1rem, 1.8vw, 1.5rem);
+    margin: 0;
+    color: #000;
+    line-height: 1.4;
+}
+
+.footer-menu {
+    flex: 1;
+    min-width: 200px;
+}
+
+.footer-menu ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer-menu li {
+    margin-bottom: 15px;
+}
+
+.footer-menu a {
+    font-family: "Cormorant Infant", serif;
+    font-size: clamp(1.1rem, 1.8vw, 1.5rem);
+    text-decoration: none;
+    color: #000;
+    transition: color 0.3s ease, transform 0.3s ease;
+    display: block;
+}
+
+.footer-menu a:hover {
+    color: #2a9d8f;
+    transform: translateX(5px);
+}
+
+/* Адаптивность для футера */
+@media (max-width: 1024px) {
+    footer {
+        padding: 40px 0;
+    }
+    
+    .footer-content {
+        gap: 30px;
+    }
+}
+
+@media (max-width: 768px) {
+    footer {
+        border-top-left-radius: 80px;
+        border-top-right-radius: 80px;
+        padding: 30px 0;
+    }
+    
+    .footer-content {
+        flex-direction: column;
+        text-align: center;
+        gap: 25px;
+    }
+    
+    .footer-contacts {
+        gap: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    footer {
+        border-top-left-radius: 50px;
+        border-top-right-radius: 50px;
+        padding: 25px 0;
+    }
+    
+    .footer-contacts,
+    .footer-menu {
+        min-width: 100%;
+    }
+    
+    .footer-menu li {
+        margin-bottom: 10px;
+    }
+}
+.footer-logo {
+    flex: 0 1 auto;
+    min-width: 150px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.logo-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.footer-logo-img {
+    width: 80px;
+    height: 80px;
+    transition: transform 0.3s ease;
+}
+
+.logo-text {
+    font-family: "Cormorant Infant", serif;
+    font-size: clamp(1.2rem, 1.8vw, 1.6rem);
+    font-weight: 600;
+    color: #000;
+    margin: 0;
+    text-align: center;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 40px;
+    flex-wrap: wrap;
+}
+
+.footer-contacts {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    flex: 1;
+    min-width: 250px;
+}
+
+.footer-menu {
+    flex: 1;
+    min-width: 200px;
+}
+
+@media (max-width: 1024px) {
+    .footer-logo {
+        min-width: 120px;
+    }
+    
+    .footer-logo-img {
+        width: 60px;
+        height: 60px;
+    }
+}
+
+@media (max-width: 768px) {
+    .footer-content {
+        flex-direction: column;
+        text-align: center;
+        gap: 30px;
+    }
+    
+    .footer-logo {
+        order: -1; 
+        width: 100%;
+    }
+    
+    .logo-container {
+        flex-direction: row;
+        justify-content: center;
+        gap: 15px;
+    }
+}
+
+@media (max-width: 480px) {
+    .logo-container {
+        flex-direction: column;
+        gap: 8px;
+    }
+    
+    .footer-logo-img {
+        width: 50px;
+        height: 50px;
+    }
+}

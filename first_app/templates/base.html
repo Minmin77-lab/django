@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Infant:ital,wght@0,300..700;1,300..700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <title>Парк аттракционов Мир Мечты</title>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-inner">
+                <div class="header-left">
+                    <a href="#" class="link-logo">
+                        <img src="./images/logo.svg" alt="Логотип парка Мир Мечты" class="logo">
+                    </a>
+                    <h1 class="name">Парк аттракционов Мир Мечты</h1>
+                </div>
+                
+                <nav class="menu">
+                    <ul class="menu-list">
+                        <li><a href="#">Аттракционы</a></li>
+                        <li><a href="#">Билеты</a></li>
+                        <li><a href="#">Пользователи</a></li>
+                        <li><a href="#">Сотрудники</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+    <main>
+        {%block main%}
+        {%endblock%}
+    </main>
+    <footer>
+<div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <div class="logo-container">
+                        <img src="./images/logo.svg" alt="Логотип парка Мир Мечты" class="footer-logo-img">
+                        <p class="logo-text">Мир мечты</p>
+                    </div>
+                </div>
+                
+                <div class="footer-contacts">
+                    <div class="contact-item">
+                        <h3>Наш адрес</h3>
+                        <p>г. Саратов, проспект Андропова, д.1</p>
+                    </div>
+                    <div class="contact-item">
+                        <h3>Телефон</h3>
+                        <p>+7 9124100607</p>
+                    </div>
+                </div>
+                <div class="footer-menu">
+                    <ul>
+                        <li><a href="#">Аттракционы</a></li>
+                        <li><a href="#">Билеты</a></li>
+                        <li><a href="#">Пользователи</a></li>
+                        <li><a href="#">Сотрудники</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
