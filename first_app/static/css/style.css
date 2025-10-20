@@ -2,7 +2,13 @@
     box-sizing: border-box;
 }
 
+/* .header{
+    position: fixed;
+    width: 100vw;
+} */
+
 header {
+
     margin: 0;
     padding: 0;
     background-color: #CBE8FF;
@@ -87,7 +93,7 @@ a {
 
 /* Интерактивность */
 a:hover {
-    color: #2a9d8f;
+    color: #fff;
 }
 
 .logo:hover {
@@ -167,7 +173,7 @@ a:hover {
 
 /* Общие стили для всего документа */
 html, body {
-    height: 100%;
+    font-family: "Cormorant Infant", serif;
     margin: 0;
     padding: 0;
 }
@@ -250,7 +256,7 @@ footer {
 }
 
 .footer-menu a:hover {
-    color: #2a9d8f;
+    color: #fff;
     transform: translateX(5px);
 }
 
@@ -299,6 +305,9 @@ footer {
         margin-bottom: 10px;
     }
 }
+
+
+
 .footer-logo {
     flex: 0 1 auto;
     min-width: 150px;
@@ -390,4 +399,249 @@ footer {
         width: 50px;
         height: 50px;
     }
+}
+
+.page-title {
+    font-size: 65px;
+}
+
+.search{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.search-container{
+    position: relative;
+    display: inline-block;
+    width: 750px;
+
+}
+
+.search-input{
+    color: #F58128;
+    margin: 0 10px 0 70px;
+    padding: 10px 100px 10px 15px;
+    height: 60px;
+    width: 700px;
+    font-size: 25px;
+    border-radius: 50px;
+    border: 3px solid #F58128;
+    outline: none;
+    padding-left: 10px;
+    caret-color: #F58128;
+    box-sizing: border-box; /* Чтобы padding не увеличивал ширину */
+    /* Свойства для управления текстом */
+    white-space: nowrap; /* Запрет переноса на новую строку */
+    overflow: hidden; /* Скрываем текст, который не помещается */
+    text-overflow: ellipsis; /* Добавляем многоточие в конце (опционально) */
+}
+
+/* Убираем многоточие при фокусе, чтобы видеть весь текст */
+.search-input:focus {
+    text-overflow: clip; /* Или оставьте ellipsis, если хотите многоточие */
+}
+
+.search-button {
+    position: absolute;
+    right: 5px;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: #F58128;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 50px;
+    cursor: pointer;
+    font-size: 16px; /* Чтобы текст не переносился */
+    z-index: 2; /* Чтобы кнопка была поверх поля ввода */
+}
+
+.search-button:hover {
+    background-color: #CBE8FF;
+}
+
+/* для фильтрации */
+
+.ticket-filters {
+    display: flex;          /* Располагаем элементы в строку */
+    flex-wrap: wrap;        /* Перенос на новую строку если не помещаются */
+    gap: 20px;              /* Расстояние между кнопками */
+    margin: 15px 0 15px 70px;         /* Отступы сверху и снизу */
+}
+
+.filter-option {
+    display: inline-block;  /* Располагаем контейнеры в строку */
+}
+
+/* Скрываем настоящие чекбоксы */
+.hidden-checkbox {
+    display: none; /* Полностью скрываем настоящий чекбокс */
+}
+
+/* Стилизуем labels как кнопки */
+.ticket-btn {
+    display: inline-block; /* Делаем label блочным элементом */
+    padding: 10px 24px;
+    border: 2px solid #F58128;
+    border-radius: 50px;
+    background: white;
+    color: #F58128;
+    cursor: pointer; /* Курсор-указатель при наведении */
+    font-size: 20px;
+    font-weight: 500; /* Полужирный текст */
+    transition: all 0.3s ease; /* Плавные анимации для всех свойств */
+    text-align: center; /* Выравнивание текста по центру */
+    min-width: 100px;  /* Минимальная ширина кнопки */
+}
+
+/* Состояние при наведении */
+.ticket-btn:hover {
+    border-color: orange;
+    background: #fff8f0;
+    color: #ff8c00;
+}
+
+/* Состояние когда чекбокс отмечен */
+.hidden-checkbox:checked + .ticket-btn {
+    background: linear-gradient(to bottom, #ffa500, #ff8c00); /* Оранжевый градиентный фон */
+    border-color: #F58128;
+    color: white;
+    box-shadow: 0 2px 8px #F58128;
+}
+
+/* кнопка добавления  */
+.add{
+    height: 80px;
+    width: 80px;
+}
+
+.block{
+    background-color: #FEEAFE;
+    width: 650px;
+    border-radius: 50px;
+    padding-bottom: 20px;
+    margin: 40px 0 40px 0;
+
+}
+
+.img-one{
+    width: 650px;
+}
+
+.name-attraction{
+    font-size: 45px;
+    margin: 0 0 0 20px;
+}
+
+.red-button{
+    display: flex;
+    margin-left: 50%;
+    margin-right: 20px;
+    gap: 10px;
+    background-color: #BE43C5;
+    border-radius: 50px;
+    justify-content: center;
+    padding: 0 5px 0 5px;
+    color: #d5d5d5;
+}
+
+.red-button:hover{
+    color: #fff;
+}
+
+.staff{
+    margin: 0 0 0 20px;
+}
+
+.attractions-menu{
+    display: grid;
+    grid-template-columns: repeat(auto-fill, 670px);
+    grid-template-rows: repeat(auto-fill, 670px);
+    gap: 0 20px;
+    padding-left: 30px;
+    margin: 0 auto;
+}
+
+.tickets-menu{
+    /* display: flex; 
+    flex-wrap: wrap; Включаем перенос на новую строку */
+    gap: 0 20px; 
+    display: grid;
+    grid-template-columns: repeat(auto-fill, 500px);
+    grid-template-rows: repeat(auto-fill, 500px);
+    gap: 0 20px;
+    padding-left: 30px;
+    margin: 0 auto;
+    align-items: flex-start;
+} 
+
+.ticket-card{
+    background-color: #FEEAFE;
+    border-radius: 35px;
+    height: 300px;
+    width: 450px;
+    padding: 30px;
+    margin: 35px auto 35px 70px;
+    box-shadow: 0 0 20px #FC84FF;
+}
+
+.card-header{
+    font-size: 35px;
+    margin: 0 0 35px 0;
+}
+
+.ticket-info{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 15px 0;
+}
+
+.ticket-type{
+    height: 60px;
+    width: 220px;
+    padding: 10px 0;
+    background-color: #fff;
+    border-radius: 50px;
+    font-size: 30px;
+    text-align: center;
+    color: #1d1010;
+    margin: 0;
+}
+
+.ticket-id{
+    font-size: 30px;
+    font-weight: 700;
+    color: #1d1010;
+    margin: 0;
+}
+
+.details-button{
+    height: 60px;
+    width: 180px;
+    font-size: 25px;
+    text-align: center;
+    background: #BE43C5;
+    border: 2px solid #BE43C5;
+    color: #ffffff;
+    padding: 10px 15px;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: block; /* Делаем блочным элементом */
+    margin: 35px auto 0; 
+        
+}
+
+.details-button:hover{
+    background: transparent;
+    color: #BE43C5;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 8px #FC84FF;    
+}
+
+.details-text{
+    margin: 0;
 }

@@ -1,0 +1,106 @@
+{% extends "base.html" %}
+
+{%block main%}
+<div class="container">
+    <section class="page-search">
+        <h1 class="page-title">Билеты</h1>
+        <form class="search" action="/search" method="get">
+            <div class="search-container">
+                <input class="search-input" type="text" name="query">
+                <button type="submit" class="search-button">Найти</button>
+            </div>
+            <img src="../static/images/add.svg" alt="добавить" class="add">
+        </form>
+
+        <div class="ticket-filters">
+            <div class="filter-option">
+                <input type="checkbox" id="adult" name="ticket-type" value="adult" class="hidden-checkbox">
+                <label for="adult" class="ticket-btn">Взрослый</label>
+            </div>
+
+            <div class="filter-option">
+                <input type="checkbox" id="child" name="ticket-type" value="child" class="hidden-checkbox">
+                <label for="child" class="ticket-btn">Детский</label>
+            </div>
+
+            <div class="filter-option">
+                <input type="checkbox" id="family" name="ticket-type" value="family" class="hidden-checkbox">
+                <label for="family" class="ticket-btn">Семейный</label>
+            </div>
+
+            <div class="filter-option">
+                <input type="checkbox" id="student" name="ticket-type" value="student" class="hidden-checkbox">
+                <label for="student" class="ticket-btn">Студенческий</label>
+            </div>
+
+            <div class="filter-option">
+                <input type="checkbox" id="other" name="ticket-type" value="other" class="hidden-checkbox">
+                <label for="other" class="ticket-btn">Другое</label>
+            </div>
+        </div>
+    </section>
+
+    <section class="tickets-menu">
+        <div class="ticket-card">
+            <h3 class="card-header">Имя пользователя</h3>
+            <div class="ticket-info">
+               <h3 class="ticket-type">Тип</h3>
+               <h3 class="ticket-id">№.......</h3>
+            </div>
+            <a href="#" class="details-ticket">
+                <div class="details-button">
+                    <p class="details-text">Подробнее</p>
+                </div>
+            </a>
+        </div>
+        <div class="ticket-card">
+            <h3 class="card-header">Имя пользователя</h3>
+            <div class="ticket-info">
+               <h3 class="ticket-type">Тип</h3>
+               <h3 class="ticket-id">№.......</h3>
+            </div>
+            <a href="#" class="details-ticket">
+                <div class="details-button">
+                    <p class="details-text">Подробнее</p>
+                </div>
+            </a>
+        </div>
+        <div class="ticket-card">
+            <h3 class="card-header">Имя пользователя</h3>
+            <div class="ticket-info">
+               <h3 class="ticket-type">Тип</h3>
+               <h3 class="ticket-id">№.......</h3>
+            </div>
+            <a href="#" class="details-ticket">
+                <div class="details-button">
+                    <p class="details-text">Подробнее</p>
+                </div>
+            </a>
+        </div>
+        <div class="ticket-card">
+            <h3 class="card-header">Имя пользователя</h3>
+            <div class="ticket-info">
+               <h3 class="ticket-type">Тип</h3>
+               <h3 class="ticket-id">№.......</h3>
+            </div>
+            <a href="#" class="details-ticket">
+                <div class="details-button">
+                    <p class="details-text">Подробнее</p>
+                </div>
+            </a>
+        </div>
+        <div class="ticket-card">
+            <h3 class="card-header">Имя пользователя</h3>
+            <div class="ticket-info">
+               <h3 class="ticket-type">Тип</h3>
+               <h3 class="ticket-id">№.......</h3>
+            </div>
+            <a href="#" class="details-ticket">
+                <div class="details-button">
+                    <p class="details-text">Подробнее</p>
+                </div>
+            </a>
+        </div>
+    </section>
+</div>
+{%endblock%}

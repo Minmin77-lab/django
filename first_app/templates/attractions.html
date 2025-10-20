@@ -1,0 +1,82 @@
+{% extends "base.html" %}
+
+{%block main%}
+<div class="container">
+    <section class="page-search">
+        <h1 class="page-title">Аттракционы</h1>
+        <form class="search" action="/search" method="get">
+            <div class="search-container">
+                <input class="search-input" type="text" name="query">
+                <button type="submit" class="search-button">Найти</button> 
+            </div>
+            <img src="../static/images/add.svg" alt="добавить" class="add">
+        </form>
+    </section>
+    <section class="attractions-menu">
+        <div class="block">
+            <div class="block-img">
+                <img src="../static/images/img-one.png" alt="карусель" class="img-one">
+            </div>
+            <h3 class="name-attraction">Название</h3>
+            <div class="staff">
+                <p class="staff-text">Ответсвенный сотрудник:</p>
+                <p class="staff-text">{{atraction.staff}}</p>
+            </div>
+            <a href="#" class="red">
+                <div class="red-button">
+                    <p class="red-text">Редактировать</p>
+                    <img src="../static/images/red-img.svg" alt="next" class="red-img">
+                </div>
+            </a>
+        </div>
+        <div class="block">
+            <div class="block-img">
+                <img src="../static/images/img-one.png" alt="карусель" class="img-one">
+            </div>
+            <h3 class="name-attraction">Название</h3>
+            <div class="staff">
+                <p class="staff-text">Ответсвенный сотрудник:</p>
+                <p class="staff-text">{{atraction.staff}}</p>
+            </div>
+            <a href="#" class="red">
+                <div class="red-button">
+                    <p class="red-text">Редактировать</p>
+                    <img src="../static/images/red-img.svg" alt="next" class="red-img">
+                </div>
+            </a>
+        </div>
+        <div class="block">
+            <div class="block-img">
+                <img src="../static/images/img-one.png" alt="карусель" class="img-one">
+            </div>
+            <h3 class="name-attraction">Название</h3>
+            <div class="staff">
+                <p class="staff-text">Ответсвенный сотрудник:</p>
+                <p class="staff-text">{{atraction.staff}}</p>
+            </div>
+            <a href="#" class="red">
+                <div class="red-button">
+                    <p class="red-text">Редактировать</p>
+                    <img src="../static/images/red-img.svg" alt="next" class="red-img">
+                </div>
+            </a>
+        </div>
+        <div class="block">
+            <div class="block-img">
+                <img src="../static/images/img-one.png" alt="карусель" class="img-one">
+            </div>
+            <h3 class="name-attraction">Название</h3>
+            <div class="staff">
+                <p class="staff-text">Ответсвенный сотрудник:</p>
+                <p class="staff-text">{{atraction.staff}}</p>
+            </div>
+            <a href="#" class="red">
+                <div class="red-button">
+                    <p class="red-text">Редактировать</p>
+                    <img src="../static/images/red-img.svg" alt="next" class="red-img">
+                </div>
+            </a>
+        </div>
+    </section>
+</div>
+{%endblock%}
