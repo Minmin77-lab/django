@@ -565,12 +565,10 @@ footer {
 }
 
 .tickets-menu{
-    /* display: flex; 
-    flex-wrap: wrap; Включаем перенос на новую строку */
+    flex-wrap: wrap;  
     gap: 0 20px; 
     display: grid;
-    grid-template-columns: repeat(auto-fill, 500px);
-    grid-template-rows: repeat(auto-fill, 500px);
+    grid-template-columns: repeat(auto-fill, 700px);
     gap: 0 20px;
     padding-left: 30px;
     margin: 0 auto;
@@ -583,7 +581,7 @@ footer {
     height: 300px;
     width: 450px;
     padding: 30px;
-    margin: 35px auto 35px 70px;
+    margin: 0px auto 35px 0px;
     box-shadow: 0 0 20px #FC84FF;
 }
 
