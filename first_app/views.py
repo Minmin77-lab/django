@@ -2,4 +2,4 @@ from django.shortcuts import render, HttpResponse
 from .models import Users
 
 def root(request):
-    return render(request, 'tickets.html')
+    return render(request, 'users.html')

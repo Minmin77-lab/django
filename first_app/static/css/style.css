@@ -419,6 +419,10 @@ footer {
 
 }
 
+.page-search{
+    margin-bottom: 35px;
+}
+
 .search-input{
     color: #F58128;
     margin: 0 10px 0 70px;
@@ -459,7 +463,7 @@ footer {
 }
 
 .search-button:hover {
-    background-color: #CBE8FF;
+    background-color: #BE43C5;
 }
 
 /* для фильтрации */
@@ -568,10 +572,9 @@ footer {
     flex-wrap: wrap;  
     gap: 0 20px; 
     display: grid;
-    grid-template-columns: repeat(auto-fill, 700px);
+    grid-template-columns: repeat(auto-fill, 500px);
     gap: 0 20px;
-    padding-left: 30px;
-    margin: 0 auto;
+    justify-content: center;
     align-items: flex-start;
 } 
 
@@ -581,7 +584,7 @@ footer {
     height: 300px;
     width: 450px;
     padding: 30px;
-    margin: 0px auto 35px 0px;
+    margin: 0px auto 35px auto;
     box-shadow: 0 0 20px #FC84FF;
 }
 
@@ -642,4 +645,59 @@ footer {
 
 .details-text{
     margin: 0;
+}
+
+/* пользователи */
+
+.user-card{
+    background-color: #D0D1D1;
+    height: 250px;
+    width: 500px;
+    border-radius: 20px;
+    padding: 25px;
+    margin: 0px auto 35px auto;
+}
+
+.user-header{
+    display: flex;
+}
+
+.profile-img{
+    margin-right: 30px
+}
+
+.user-name{
+    font-size: 30px;
+}
+
+.user-info{
+    font-size: 25px;
+}
+
+.erl{
+    display: flex;
+    justify-content: space-between;
+}
+
+.podrobnee{
+    height: 60px;
+    width: 60px;
+}
+
+.email{
+    margin-top: 10px;
+}
+
+.regist{
+    margin-top: 10px;
+}
+
+.users-menu{
+    flex-wrap: wrap;  
+    gap: 0 20px; 
+    display: grid;
+    grid-template-columns: repeat(auto-fill, 500px);
+    gap: 0 20px;
+    justify-content: center;
+    align-items: flex-start;
 }
