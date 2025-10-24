@@ -541,13 +541,11 @@ footer {
 
 .red-button{
     display: flex;
-    margin-left: 50%;
-    margin-right: 20px;
+    /* margin: 20px auto 0 auto; */
     gap: 10px;
     background-color: #BE43C5;
     border-radius: 50px;
     justify-content: center;
-    padding: 0 5px 0 5px;
     color: #d5d5d5;
 }
 
@@ -704,7 +702,7 @@ footer {
 
 .attraction-block{
     width: 700px;
-    height: 750px;
+    height: 850px;
     background-color: #E8F0F6;
     margin: 40px auto 40px auto;
     border-radius: 80px;
@@ -713,6 +711,14 @@ footer {
 
 .attr-text{
     font-size: 30px;
-    margin: 25px 0 25px 0;
+    margin: 25px 0 35px 10px;
 }
 
+.attr-info{
+    margin-left: 25px;
+    color: #BE43C5;
+}
+
+.hui{
+    margin-top: 0;
+}
