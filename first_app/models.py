@@ -46,25 +46,25 @@ class Staff(models.Model):
         ]
 
 class Attractions(models.Model):
-    MIN_HEIGHT_CHOICES = [
-        (90, '90 см'),
-        (120, '120 см'),
-        (150, '150 см'),
-        (155, '155 см'), 
-        (165, '165 см')       
-    ]
-    MAX_HEIGHT_CHOICES = [
-        (120, '120 см'),
-        (190, '190 см'),
-        (165, '165 см')      
-    ]
-    MIN_AGE_CHOICES = [
-        (3, '3 года'),
-        (6, '6 лет'),
-        (14, '14 лет'),
-        (16, '16 лет'),
-        (18, '18 лет')      
-    ]
+    # MIN_HEIGHT_CHOICES = [
+    #     (90, '90 см'),
+    #     (120, '120 см'),
+    #     (150, '150 см'),
+    #     (155, '155 см'), 
+    #     (165, '165 см')       
+    # ]
+    # MAX_HEIGHT_CHOICES = [
+    #     (120, '120 см'),
+    #     (190, '190 см'),
+    #     (165, '165 см')      
+    # ]
+    # MIN_AGE_CHOICES = [
+    #     (3, '3 года'),
+    #     (6, '6 лет'),
+    #     (14, '14 лет'),
+    #     (16, '16 лет'),
+    #     (18, '18 лет')      
+    # ]
     CAPACITY_CHOICES = [
         (10, '10 человек'),
         (15, '15 человек'),
@@ -79,12 +79,12 @@ class Attractions(models.Model):
     ]
 
     name = models.CharField('Название', max_length=100, unique=True)
-    min_height = models.IntegerField('Минимальный рост (см)', choices=MIN_HEIGHT_CHOICES)
-    max_height = models.IntegerField('Максимальный рост (см)', choices=MAX_HEIGHT_CHOICES)
-    min_age = models.IntegerField('Минимальный возраст', choices=MIN_AGE_CHOICES)
+    min_height = models.IntegerField('Минимальный рост (см)', null=True)
+    max_height = models.IntegerField('Максимальный рост (см)', null=True)
+    min_age = models.IntegerField('Минимальный возраст', null=True)
     activity_status = models.BooleanField('Статус активности', default=True)
     capacity = models.IntegerField('Вместимость (чел)', choices=CAPACITY_CHOICES)
-    duration_minutes = models.IntegerField('Продолжительность (мин)', choices=DURATION_CHOICES, default=5)  
+    duration_minutes = models.IntegerField('Продолжительность (мин)', null=True)  
     staff = models.ForeignKey(Staff, on_delete=models.SET_NULL, null=True, blank=True, verbose_name='Ответственный сотрудник')
     
     def __str__(self):

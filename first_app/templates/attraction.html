@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{%block main%}
+<div class="container">
+    <section class="page-search">
+        <h1 class="page-title">Название аттракциона</h1>
+    </section>
+    <section class="attraction">
+        <div class="attraction-block">
+            <div class="attr-text">
+                <p class="staff-text">Ответсвенный сотрудник</p>
+                <p class="attr-info">Yjcrjd Rjycnfynby</p>
+            </div>
+            <div class="attr-text">
+                <p class="min-height-text">Минимальный рост</p>
+                <p class="attr-info">{{attraction.staff}}</p>
+            </div>
+            <div class="attr-text">
+                <p class="max-height-text">Максимальный рост</p>
+                <p class="attr-info">{{attraction.staff}}</p>
+            </div>
+            <div class="attr-text">
+                <p class="capacity-text">Вместимость</p>
+                <p class="attr-info">{{attraction.staff}}</p>
+            </div>
+            <div class="attr-text">
+                <p class="duration-text">Продолжительность</p>
+                <p class="attr-info">{{attraction.staff}}</p>
+            </div>
+            <a href="#" class="red">
+                <div class="red-button">
+                    <p class="red-text">Редактировать</p>
+                    <img src="../static/images/red-img.svg" alt="next" class="red-img">
+                </div>
+            </a>
+        </div>
+    </section>
+</div>
+{%endblock%}

@@ -701,3 +701,18 @@ footer {
     justify-content: center;
     align-items: flex-start;
 }
+
+.attraction-block{
+    width: 700px;
+    height: 750px;
+    background-color: #E8F0F6;
+    margin: 40px auto 40px auto;
+    border-radius: 80px;
+    padding: 40px;
+}
+
+.attr-text{
+    font-size: 30px;
+    margin: 25px 0 25px 0;
+}
+
