@@ -533,6 +533,8 @@ footer {
 
 .img-one{
     width: 650px;
+    border-radius: 50px;
+    height:370px;
 }
 
 .name-attraction{
