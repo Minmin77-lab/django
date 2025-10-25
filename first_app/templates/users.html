@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-
+{% load static %}
 {%block main%}
 
 <div class="container">
@@ -10,94 +10,32 @@
                 <input class="search-input" type="text" name="query">
                 <button type="submit" class="search-button">Найти</button>
             </div>
-            <img src="../static/images/add.svg" alt="добавить" class="add">
+            <img src="{% static 'images/add.svg' %}" alt="добавить" class="add">
         </form>
     </section>
 
     <section class="users-menu">
+        {% for user_obj in users_list %}
         <div class="user-card">
             <div class="user-header">
-                <img src="../static/images/profile.co.svg" alt="фото профиля" class="profile-img">
-                <h3 class="user-name">Имя Фамилия</h3>
+                {% if user_obj.profile_picture %}
+                <img src="{{ user_obj.profile_picture.url }}" alt="фото профиля {{ user_obj.name }}" class="profile-img">
+                {% else %}
+                <img src="{% static 'images/profile.co.svg' %}" alt="фото профиля" class="profile-img">
+                {% endif %}
+                <h3 class="user-name">{{ user_obj.name }} {{ user_obj.surname }}</h3>
             </div>
             <div class="erl">
                 <div class="user-info">
-                    <p class="email">Почта</p>
-                    <p class="regist">Дата и время регистрации</p>
+                    <p class="email">{{ user_obj.email }}</p>  
+                    <p class="regist">Зарегистрирован: {{ user_obj.created_at|date:"d.m.Y H:i" }}</p>  
                 </div>
-                <img src="../static/images/podrobnee.svg" alt="Подробнее" class="podrobnee">
+                <img src="{% static 'images/podrobnee.svg' %}" alt="Подробнее" class="podrobnee">
             </div>
         </div>
-
-                <div class="user-card">
-            <div class="user-header">
-                <img src="../static/images/profile.co.svg" alt="фото профиля" class="profile-img">
-                <h3 class="user-name">Имя Фамилия</h3>
-            </div>
-            <div class="erl">
-                <div class="user-info">
-                    <p class="email">Почта</p>
-                    <p class="regist">Дата и время регистрации</p>
-                </div>
-                <img src="../static/images/podrobnee.svg" alt="Подробнее" class="podrobnee">
-            </div>
-        </div>
-
-                <div class="user-card">
-            <div class="user-header">
-                <img src="../static/images/profile.co.svg" alt="фото профиля" class="profile-img">
-                <h3 class="user-name">Имя Фамилия</h3>
-            </div>
-            <div class="erl">
-                <div class="user-info">
-                    <p class="email">Почта</p>
-                    <p class="regist">Дата и время регистрации</p>
-                </div>
-                <img src="../static/images/podrobnee.svg" alt="Подробнее" class="podrobnee">
-            </div>
-        </div>
-
-                <div class="user-card">
-            <div class="user-header">
-                <img src="../static/images/profile.co.svg" alt="фото профиля" class="profile-img">
-                <h3 class="user-name">Имя Фамилия</h3>
-            </div>
-            <div class="erl">
-                <div class="user-info">
-                    <p class="email">Почта</p>
-                    <p class="regist">Дата и время регистрации</p>
-                </div>
-                <img src="../static/images/podrobnee.svg" alt="Подробнее" class="podrobnee">
-            </div>
-        </div>
-
-                <div class="user-card">
-            <div class="user-header">
-                <img src="../static/images/profile.co.svg" alt="фото профиля" class="profile-img">
-                <h3 class="user-name">Имя Фамилия</h3>
-            </div>
-            <div class="erl">
-                <div class="user-info">
-                    <p class="email">Почта</p>
-                    <p class="regist">Дата и время регистрации</p>
-                </div>
-                <img src="../static/images/podrobnee.svg" alt="Подробнее" class="podrobnee">
-            </div>
-        </div>
-
-                <div class="user-card">
-            <div class="user-header">
-                <img src="../static/images/profile.co.svg" alt="фото профиля" class="profile-img">
-                <h3 class="user-name">Имя Фамилия</h3>
-            </div>
-            <div class="erl">
-                <div class="user-info">
-                    <p class="email">Почта</p>
-                    <p class="regist">Дата и время регистрации</p>
-                </div>
-                <img src="../static/images/podrobnee.svg" alt="Подробнее" class="podrobnee">
-            </div>
-        </div>
+        {% empty %}
+        <p>Пользователи не найдены.</p>
+        {% endfor %}
     </section>
 </div>
 

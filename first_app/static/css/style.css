@@ -524,6 +524,7 @@ footer {
 .block{
     background-color: #FEEAFE;
     width: 650px;
+    height: 580px;
     border-radius: 50px;
     padding-bottom: 20px;
     margin: 40px 0 40px 0;
@@ -541,18 +542,18 @@ footer {
 
 .red-button{
     display: flex;
-    /* margin: 20px auto 0 auto; */
+    margin: 20px auto 0 auto;
     gap: 10px;
     background-color: #BE43C5;
     border-radius: 50px;
     justify-content: center;
     color: #d5d5d5;
+    width: 250px;
 }
 
 .red-button:hover{
     color: #fff;
 }
-
 .staff{
     margin: 0 0 0 20px;
 }
@@ -579,7 +580,7 @@ footer {
 .ticket-card{
     background-color: #FEEAFE;
     border-radius: 35px;
-    height: 300px;
+    height: 380px;
     width: 450px;
     padding: 30px;
     margin: 0px auto 35px auto;
@@ -702,7 +703,7 @@ footer {
 
 .attraction-block{
     width: 700px;
-    height: 850px;
+    /* height: 850px; */
     background-color: #E8F0F6;
     margin: 40px auto 40px auto;
     border-radius: 80px;

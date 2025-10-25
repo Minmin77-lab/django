@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-
+{% load static %}
 {%block main%}
 <div class="container">
     <section class="page-search">
@@ -9,98 +9,47 @@
                 <input class="search-input" type="text" name="query">
                 <button type="submit" class="search-button">Найти</button>
             </div>
-            <img src="../static/images/add.svg" alt="добавить" class="add">
+            <img src="{% static 'images/add.svg' %}" alt="добавить" class="add">
         </form>
-
+<!-- сделать фильтрацию -->
+<!-- поменять порядок вывода билетов -->
         <div class="ticket-filters">
+            {% for type in ticket_types %}
             <div class="filter-option">
-                <input type="checkbox" id="adult" name="ticket-type" value="adult" class="hidden-checkbox">
-                <label for="adult" class="ticket-btn">Взрослый</label>
+                <input type="checkbox" id="{{ type.name|slugify }}" name="ticket-type" value="{{ type.name }}" class="hidden-checkbox">
+                <label for="{{ type.name|slugify }}" class="ticket-btn">{{ type.name }}</label>
             </div>
-
-            <div class="filter-option">
-                <input type="checkbox" id="child" name="ticket-type" value="child" class="hidden-checkbox">
-                <label for="child" class="ticket-btn">Детский</label>
-            </div>
-
-            <div class="filter-option">
-                <input type="checkbox" id="family" name="ticket-type" value="family" class="hidden-checkbox">
-                <label for="family" class="ticket-btn">Семейный</label>
-            </div>
-
-            <div class="filter-option">
-                <input type="checkbox" id="student" name="ticket-type" value="student" class="hidden-checkbox">
-                <label for="student" class="ticket-btn">Студенческий</label>
-            </div>
-
-            <div class="filter-option">
-                <input type="checkbox" id="other" name="ticket-type" value="other" class="hidden-checkbox">
-                <label for="other" class="ticket-btn">Другое</label>
-            </div>
+            {% endfor %}
         </div>
     </section>
 
     <section class="tickets-menu">
+        
+        {% for ticket in tickets_list %}
         <div class="ticket-card">
-            <h3 class="card-header">Имя пользователя</h3>
+            <h3 class="card-header">{{ ticket.user.name }} {{ ticket.user.surname }}</h3>
             <div class="ticket-info">
-               <h3 class="ticket-type">Тип</h3>
-               <h3 class="ticket-id">№.......</h3>
+               <h3 class="ticket-type">{{ ticket.ticket_type.name }}</h3> 
+               <h3 class="ticket-id">№ {{ ticket.id }}</h3> 
             </div>
+            
+            <div class="ticket-dates">
+               <p class="date-text">Куплен: {{ ticket.purchase_date|date:"d.m.Y H:i" }}</p>
+               {% if ticket.valid_until %}
+               <p class="date-text">Действителен до: {{ ticket.valid_until|date:"d.m.Y" }}</p>
+               {% else %}
+               <p class="date-text">Бессрочный</p>
+               {% endif %}
+            </div>
+
             <a href="#" class="details-ticket">
                 <div class="details-button">
                     <p class="details-text">Подробнее</p>
                 </div>
             </a>
         </div>
-        <div class="ticket-card">
-            <h3 class="card-header">Имя пользователя</h3>
-            <div class="ticket-info">
-               <h3 class="ticket-type">Тип</h3>
-               <h3 class="ticket-id">№.......</h3>
-            </div>
-            <a href="#" class="details-ticket">
-                <div class="details-button">
-                    <p class="details-text">Подробнее</p>
-                </div>
-            </a>
-        </div>
-        <div class="ticket-card">
-            <h3 class="card-header">Имя пользователя</h3>
-            <div class="ticket-info">
-               <h3 class="ticket-type">Тип</h3>
-               <h3 class="ticket-id">№.......</h3>
-            </div>
-            <a href="#" class="details-ticket">
-                <div class="details-button">
-                    <p class="details-text">Подробнее</p>
-                </div>
-            </a>
-        </div>
-        <div class="ticket-card">
-            <h3 class="card-header">Имя пользователя</h3>
-            <div class="ticket-info">
-               <h3 class="ticket-type">Тип</h3>
-               <h3 class="ticket-id">№.......</h3>
-            </div>
-            <a href="#" class="details-ticket">
-                <div class="details-button">
-                    <p class="details-text">Подробнее</p>
-                </div>
-            </a>
-        </div>
-        <div class="ticket-card">
-            <h3 class="card-header">Имя пользователя</h3>
-            <div class="ticket-info">
-               <h3 class="ticket-type">Тип</h3>
-               <h3 class="ticket-id">№.......</h3>
-            </div>
-            <a href="#" class="details-ticket">
-                <div class="details-button">
-                    <p class="details-text">Подробнее</p>
-                </div>
-            </a>
-        </div>
+        {% endfor %}
+
     </section>
 </div>
 {%endblock%}

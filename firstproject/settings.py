@@ -115,9 +115,27 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.2/howto/static-files/
 
-STATIC_URL = 'static/'
+# сообщает веб-серверу (Nginx), какие URL ведут к статике.
+STATIC_URL = '/static/'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# Список папок, где Django будет искать статические файлы
+
+STATICFILES_DIRS = [
+    BASE_DIR / 'first_app' / 'static',
+]
+
+# пустая папка, куда Django сложит все статические файлы.
+STATIC_ROOT = BASE_DIR / 'staticfiles'
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = BASE_DIR / 'media'
+
+# Пока DEBUG = True, Django сам раздает статические файлы
+# {% static 'css/style.css' %}, Django превращает это в /static/css/style.css
+# DEBUG = False, Django из соображений безопасности и производительности полностью перестает раздавать статику. Он считает, что это работа для "настоящего" веб-сервера (Nginx, Apache) или специального сервиса (WhiteNoise).
+# P.S. MEDIA_URL и MEDIA_ROOT — это для файлов, которые загружают пользователи (аватарки, фотки в постах), они к CSS/JS отношения не имеют.

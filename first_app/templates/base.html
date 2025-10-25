@@ -1,31 +1,34 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Infant:ital,wght@0,300..700;1,300..700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../static/css/style.css">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
     <title>Парк аттракционов Мир Мечты</title>
 </head>
+
 <body>
     <header>
         <div class="container">
             <div class="header-inner">
                 <div class="header-left">
-                    <a href="#" class="link-logo">
-                        <img src="../static/images/logo.svg" alt="Логотип парка Мир Мечты" class="logo">
+                    <a href="{% url 'attractions' %}" class="link-logo">
+                        <img src="{% static 'images/logo.svg' %}" alt="Логотип парка Мир Мечты" class="logo">
                     </a>
                     <h1 class="name">Парк аттракционов Мир Мечты</h1>
                 </div>
-                
+
                 <nav class="menu">
                     <ul class="menu-list">
-                        <li><a href="#">Аттракционы</a></li>
-                        <li><a href="tickets.html">Билеты</a></li>
-                        <li><a href="#">Пользователи</a></li>
-                        <li><a href="#">Сотрудники</a></li>
+                        <li><a href="{% url 'attractions' %}">Аттракционы</a></li>
+                        <li><a href="{% url 'tickets' %}">Билеты</a></li>
+                        <li><a href="{% url 'users' %}">Пользователи</a></li>
+                        <li><a href="{% url 'staff' %}">Сотрудники</a></li>
                     </ul>
                 </nav>
             </div>
@@ -36,15 +39,15 @@
         {%endblock%}
     </main>
     <footer>
-<div class="container">
+        <div class="container">
             <div class="footer-content">
                 <div class="footer-logo">
                     <div class="logo-container">
-                        <img src="../static/images/logo.svg" alt="Логотип парка Мир Мечты" class="footer-logo-img">
+                        <img src="{% static 'images/logo.svg' %}" alt="Логотип парка Мир Мечты" class="footer-logo-img">
                         <p class="logo-text">Мир мечты</p>
                     </div>
                 </div>
-                
+
                 <div class="footer-contacts">
                     <div class="contact-item">
                         <h3>Наш адрес</h3>
@@ -57,14 +60,15 @@
                 </div>
                 <div class="footer-menu">
                     <ul>
-                        <li><a href="#">Аттракционы</a></li>
-                        <li><a href="#">Билеты</a></li>
-                        <li><a href="#">Пользователи</a></li>
-                        <li><a href="#">Сотрудники</a></li>
+                        <li><a href="{% url 'attractions' %}">Аттракционы</a></li>
+                        <li><a href="{% url 'tickets' %}">Билеты</a></li>
+                        <li><a href="{% url 'users' %}">Пользователи</a></li>
+                        <li><a href="{% url 'staff' %}">Сотрудники</a></li>
                     </ul>
                 </div>
             </div>
         </div>
     </footer>
 </body>
+
 </html>

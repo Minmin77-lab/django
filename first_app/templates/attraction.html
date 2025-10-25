@@ -1,36 +1,49 @@
 {% extends "base.html" %}
-
+{% load static %}
 {%block main%}
 <div class="container">
     <section class="page-search">
-        <h1 class="page-title">Название аттракциона</h1>
+        <h1 class="page-title">{{ attraction.name }}</h1> 
     </section>
     <section class="attraction">
+        <!-- вопрос длинны блока(вылезают данные) -->
         <div class="attraction-block">
-            <div class="attr-text hui">
-                <p class="staff-text hui">Ответсвенный сотрудник</p>
-                <p class="attr-info">hgvkdfjhgdkfjgh ssdfhsdihf</p>
+            <div class="attr-text">
+                <p class="staff-text">Ответственный сотрудник</p>
+                {% if attraction.staff %}
+                <p class="attr-info">{{ attraction.staff.name }} {{ attraction.staff.surname }}</p>
+                {% else %}
+                <p class="attr-info">Не назначен</p>
+                {% endif %}
             </div>
             <div class="attr-text">
                 <p class="min-height-text">Минимальный рост (см)</p>
-                <p class="attr-info">{{133}}</p>
+                <p class="attr-info">{{ attraction.min_height|default:"Не указано" }}</p>
             </div>
             <div class="attr-text">
                 <p class="max-height-text">Максимальный рост (см)</p>
-                <p class="attr-info">{{155}}</p>
+                <p class="attr-info">{{ attraction.max_height|default:"Не указано" }}</p>
             </div>
             <div class="attr-text">
                 <p class="capacity-text">Вместимость (чел)</p>
-                <p class="attr-info">{{250}}</p>
+                <p class="attr-info">{{ attraction.capacity }}</p>
             </div>
             <div class="attr-text">
-                <p class="duration-text">Продолжительность (сек)</p>
-                <p class="attr-info">{{330}}</p>
+                <p class="duration-text">Продолжительность (мин)</p>
+                <p class="attr-info">{{ attraction.duration_minutes|default:"Не указано" }}</p>
             </div>
-            <a href="#" class="red">
+            <div class="attr-text">
+                <p class="min-age-text">Минимальный возраст</p>
+                <p class="attr-info">{{ attraction.min_age|default:"Не указано" }}</p>
+            </div>
+            <div class="attr-text">
+                <p class="activity-text">Статус активности</p>
+                <p class="attr-info">{% if attraction.activity_status %}Активен{% else %}Неактивен{% endif %}</p>
+            </div>
+            <a href="{% url 'attractions' %}" class="red">
                 <div class="red-button">
-                    <p class="red-text">Редактировать</p>
-                    <img src="../static/images/red-img.svg" alt="next" class="red-img">
+                    <p class="red-text">Назад к списку</p>
+                    <img src="{% static 'images/red-img.svg' %}" alt="next" class="red-img">
                 </div>
             </a>
         </div>

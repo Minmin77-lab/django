@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% load static %}
 
 {%block main%}
 <div class="container">
@@ -9,74 +10,40 @@
                 <input class="search-input" type="text" name="query">
                 <button type="submit" class="search-button">Найти</button> 
             </div>
-            <img src="../static/images/add.svg" alt="добавить" class="add">
+            <img src="{% static 'images/add.svg' %}" alt="добавить" class="add">
         </form>
     </section>
     <section class="attractions-menu">
+        {% for attraction in attractions_list %} 
+<!-- сделать размер карточки меньше и чтобы норм располагались-->
         <div class="block">
             <div class="block-img">
-                <img src="../static/images/img-one.png" alt="карусель" class="img-one">
+                {% if attraction.main_image %}
+                <img src="{{ attraction.main_image.url }}" alt="{{ attraction.name }}" class="img-one">
+                {% else %}
+                <img src="{% static 'images/img-one.png' %}" alt="placeholder" class="img-one">
+                {% endif %}
             </div>
-            <h3 class="name-attraction">Название</h3>
+            <h3 class="name-attraction">{{ attraction.name }}</h3>
             <div class="staff">
-                <p class="staff-text">Ответсвенный сотрудник:</p>
-                <p class="staff-text">{{atraction.staff}}</p>
+                <p class="staff-text">Ответственный сотрудник:
+                    {% if attraction.staff %}
+                    {{ attraction.staff.name }} {{ attraction.staff.surname }}
+                    {% else %}
+                    Не назначен
+                    {% endif %}
+                </p>
             </div>
-            <a href="#" class="red">
+            <a href="{% url 'attraction_detail' pk=attraction.pk %}" class="red">
                 <div class="red-button">
-                    <p class="red-text">Редактировать</p>
-                    <img src="../static/images/red-img.svg" alt="next" class="red-img">
+                    <p class="red-text">Подробнее</p>
+                    <img src="{% static 'images/red-img.svg' %}" alt="next" class="red-img">
                 </div>
             </a>
         </div>
-        <div class="block">
-            <div class="block-img">
-                <img src="../static/images/img-one.png" alt="карусель" class="img-one">
-            </div>
-            <h3 class="name-attraction">Название</h3>
-            <div class="staff">
-                <p class="staff-text">Ответсвенный сотрудник:</p>
-                <p class="staff-text">{{atraction.staff}}</p>
-            </div>
-            <a href="#" class="red">
-                <div class="red-button">
-                    <p class="red-text">Редактировать</p>
-                    <img src="../static/images/red-img.svg" alt="next" class="red-img">
-                </div>
-            </a>
-        </div>
-        <div class="block">
-            <div class="block-img">
-                <img src="../static/images/img-one.png" alt="карусель" class="img-one">
-            </div>
-            <h3 class="name-attraction">Название</h3>
-            <div class="staff">
-                <p class="staff-text">Ответсвенный сотрудник:</p>
-                <p class="staff-text">{{atraction.staff}}</p>
-            </div>
-            <a href="#" class="red">
-                <div class="red-button">
-                    <p class="red-text">Редактировать</p>
-                    <img src="../static/images/red-img.svg" alt="next" class="red-img">
-                </div>
-            </a>
-        </div>
-        <div class="block">
-            <div class="block-img">
-                <img src="../static/images/img-one.png" alt="карусель" class="img-one">
-            </div>
-            <h3 class="name-attraction">Название</h3>
-            <div class="staff">
-                <p class="staff-text">Ответсвенный сотрудник:</p>
-                <p class="staff-text">{{atraction.staff}}</p>
-            </div>
-            <a href="#" class="red">
-                <div class="red-button">
-                    <p class="red-text">Редактировать</p>
-                    <img src="../static/images/red-img.svg" alt="next" class="red-img">
-                </div>
-            </a>
-        </div>
+        {% empty %}
+        <p>Аттракционы не найдены.</p>
+        {% endfor %}
     </section>
 </div>
 {%endblock%}
