@@ -21,7 +21,7 @@
                 {% if attraction.main_image %}
                 <img src="{{ attraction.main_image.url }}" alt="{{ attraction.name }}" class="img-one">
                 {% else %}
-                <img src="{% static 'images/img-one.png' %}" alt="placeholder" class="img-one">
+                <img src="{% static 'images/img-one.jpg' %}" alt="placeholder" class="img-one">
                 {% endif %}
             </div>
             <h3 class="name-attraction">{{ attraction.name }}</h3>

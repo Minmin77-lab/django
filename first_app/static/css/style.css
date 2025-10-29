@@ -567,6 +567,8 @@ footer {
     gap: 0 20px;
     padding-left: 30px;
     margin: 0 auto;
+    justify-items: center;
+    max-width: 1400px;
 }
 
 .tickets-menu{
@@ -724,4 +726,10 @@ footer {
 
 .hui{
     margin-top: 0;
+}
+
+.profile-img{
+    width: 80px;
+    height: 80px;
+    border-radius: 50px;
 }

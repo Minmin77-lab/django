@@ -85,7 +85,7 @@ class Attractions(models.Model):
     max_height = models.IntegerField('Максимальный рост (см)', null=True)
     min_age = models.IntegerField('Минимальный возраст', null=True)
     activity_status = models.BooleanField('Статус активности', default=True)
-    capacity = models.IntegerField('Вместимость (чел)', choices=CAPACITY_CHOICES)
+    sourceity = models.IntegerField('Вместимость (чел)', choices=CAPACITY_CHOICES)
     duration_minutes = models.IntegerField('Продолжительность (мин)', null=True)  
     staff = models.ForeignKey(Staff, on_delete=models.SET_NULL, null=True, blank=True, verbose_name='Ответственный сотрудник')
     main_image = models.ImageField('Главное изображение', upload_to='attraction_images/', null=True, blank=True)
