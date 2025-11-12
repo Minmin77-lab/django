@@ -734,3 +734,6 @@ footer {
     border-radius: 50px;
 }
 
+::placeholder{
+    font-size: 18px;
+}
