@@ -416,8 +416,13 @@ footer {
     position: relative;
     display: inline-block;
     width: 750px;
+    transition: all 0.5s;
 
 }
+.search-container:hover {
+   border-color: #BE43C5;
+}
+
 
 .page-search{
     margin-bottom: 35px;
