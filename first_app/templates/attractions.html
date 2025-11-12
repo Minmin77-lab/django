@@ -5,17 +5,23 @@
 <div class="container">
     <section class="page-search">
         <h1 class="page-title">Аттракционы</h1>
-        <form class="search" action="/search" method="get">
+        <form class="search" action="{% url 'attractions' %}" method="get">
             <div class="search-container">
-                <input class="search-input" type="text" name="query">
+                <input class="search-input" type="text" name="query" value="{{ search_query }}" placeholder="Поиск по названию или сотруднику...">
                 <button type="submit" class="search-button">Найти</button> 
             </div>
             <img src="{% static 'images/add.svg' %}" alt="добавить" class="add">
         </form>
+        
+        {% if search_query %}
+        <div class="search-results-info">
+            <p>Результаты поиска для: "{{ search_query }}"</p>
+            <a href="{% url 'attractions' %}" class="clear-search">Показать все</a>
+        </div>
+        {% endif %}
     </section>
     <section class="attractions-menu">
         {% for attraction in attractions_list %} 
-<!-- сделать размер карточки меньше и чтобы норм располагались-->
         <div class="block">
             <div class="block-img">
                 {% if attraction.main_image %}
@@ -42,7 +48,13 @@
             </a>
         </div>
         {% empty %}
-        <p>Аттракционы не найдены.</p>
+        <p>
+            {% if search_query %}
+            Аттракционы по запросу "{{ search_query }}" не найдены.
+            {% else %}
+            Аттракционы не найдены.
+            {% endif %}
+        </p>
         {% endfor %}
     </section>
 </div>

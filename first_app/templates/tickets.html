@@ -4,32 +4,51 @@
 <div class="container">
     <section class="page-search">
         <h1 class="page-title">Билеты</h1>
-        <form class="search" action="/search" method="get">
+        <form class="search" action="{% url 'tickets' %}" method="get">
             <div class="search-container">
-                <input class="search-input" type="text" name="query">
+                <input class="search-input" type="text" name="query" value="{{ search_query }}" placeholder="Поиск по имени, фамилии, типу билета...">
                 <button type="submit" class="search-button">Найти</button>
             </div>
             <img src="{% static 'images/add.svg' %}" alt="добавить" class="add">
         </form>
-<!-- сделать фильтрацию -->
-<!-- поменять порядок вывода билетов -->
-        <div class="ticket-filters">
-            {% for type in ticket_types %}
-            <div class="filter-option">
-                <input type="checkbox" id="{{ type.name|slugify }}" name="ticket-type" value="{{ type.name }}" class="hidden-checkbox">
-                <label for="{{ type.name|slugify }}" class="ticket-btn">{{ type.name }}</label>
-            </div>
-            {% endfor %}
+        
+        {% if search_query %}
+        <div class="search-results-info">
+            <p>Результаты поиска для: "{{ search_query }}"</p>
+            <a href="{% url 'tickets' %}" class="clear-search">Показать все</a>
         </div>
+        {% endif %}
+
+        <!-- Фильтрация по типам билетов -->
+        <form method="get" action="{% url 'tickets' %}" class="filter-form">
+            <!-- Сохраняем поисковый запрос при фильтрации -->
+            {% if search_query %}
+            <input type="hidden" name="query" value="{{ search_query }}">
+            {% endif %}
+            
+            <div class="ticket-filters">
+                {% for type in ticket_types %}
+                <div class="filter-option">
+                    <input type="checkbox" 
+                           id="{{ type.name|slugify }}" 
+                           name="type" 
+                           value="{{ type.name }}" 
+                           class="hidden-checkbox"
+                           {% if type.name in selected_types %}checked{% endif %}
+                           onchange="this.form.submit()">
+                    <label for="{{ type.name|slugify }}" class="ticket-btn">{{ type.get_name_display }}</label>
+                </div>
+                {% endfor %}
+            </div>
+        </form>
     </section>
 
     <section class="tickets-menu">
-        
         {% for ticket in tickets_list %}
         <div class="ticket-card">
             <h3 class="card-header">{{ ticket.user.name }} {{ ticket.user.surname }}</h3>
             <div class="ticket-info">
-               <h3 class="ticket-type">{{ ticket.ticket_type.name }}</h3> 
+               <h3 class="ticket-type">{{ ticket.ticket_type.get_name_display }}</h3> 
                <h3 class="ticket-id">№ {{ ticket.id }}</h3> 
             </div>
             
@@ -48,8 +67,15 @@
                 </div>
             </a>
         </div>
+        {% empty %}
+        <p>
+            {% if search_query or selected_types %}
+            Билеты не найдены по заданным критериям.
+            {% else %}
+            Билеты не найдены.
+            {% endif %}
+        </p>
         {% endfor %}
-
     </section>
 </div>
 {%endblock%}

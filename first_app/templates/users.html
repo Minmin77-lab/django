@@ -5,13 +5,20 @@
 <div class="container">
     <section class="page-search">
         <h1 class="page-title">Пользователи</h1>
-        <form class="search" action="/search" method="get">
+        <form class="search" action="{% url 'users' %}" method="get">
             <div class="search-container">
-                <input class="search-input" type="text" name="query">
+                <input class="search-input" type="text" name="query" value="{{ search_query }}" placeholder="Поиск по имени, фамилии, email...">
                 <button type="submit" class="search-button">Найти</button>
             </div>
             <img src="{% static 'images/add.svg' %}" alt="добавить" class="add">
         </form>
+        
+        {% if search_query %}
+        <div class="search-results-info">
+            <p>Результаты поиска для: "{{ search_query }}"</p>
+            <a href="{% url 'users' %}" class="clear-search">Показать все</a>
+        </div>
+        {% endif %}
     </section>
 
     <section class="users-menu">
@@ -34,7 +41,13 @@
             </div>
         </div>
         {% empty %}
-        <p>Пользователи не найдены.</p>
+        <p>
+            {% if search_query %}
+            Пользователи по запросу "{{ search_query }}" не найдены.
+            {% else %}
+            Пользователи не найдены.
+            {% endif %}
+        </p>
         {% endfor %}
     </section>
 </div>
