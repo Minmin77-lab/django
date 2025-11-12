@@ -25,11 +25,11 @@ def tickets(request):
     all_tickets = Tickets.objects.select_related('user', 'ticket_type').all().order_by('-purchase_date')
     all_ticket_types = TicketTypes.objects.all()
     
-    # Применяем фильтрацию по типам
+
     if selected_types:
         all_tickets = all_tickets.filter(ticket_type__name__in=selected_types)
     
-    # Применяем поиск
+ 
     if query:
         all_tickets = all_tickets.filter(
             Q(user__name__icontains=query) |

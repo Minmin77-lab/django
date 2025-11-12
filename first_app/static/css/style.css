@@ -2,10 +2,6 @@
     box-sizing: border-box;
 }
 
-/* .header{
-    position: fixed;
-    width: 100vw;
-} */
 
 header {
 
@@ -14,7 +10,7 @@ header {
     background-color: #CBE8FF;
     border-bottom-left-radius: 150px;
     border-bottom-right-radius: 150px;
-    overflow: hidden; /* Чтобы скругления работали правильно */
+    overflow: hidden;
 }
 
 .cormorant-infant-uniquifier {
@@ -38,29 +34,29 @@ header {
     gap: 30px;
 }
 
-/* Блок логотипа и названия */
+
 .header-left {
     display: flex;
     align-items: center;
     gap: 20px;
     flex-shrink: 0;
-    min-width: 0; /* Позволяет сжиматься */
+    min-width: 0; 
 }
 
 .logo {
     height: 80px;
     width: 80px;
     transition: transform 0.3s ease;
-    flex-shrink: 0; /* Не сжимать логотип */
+    flex-shrink: 0; 
 }
 
 .name {
-    font-size: clamp(1.2rem, 2.5vw, 2rem); /* Адаптивный размер шрифта */
+    font-size: clamp(1.2rem, 2.5vw, 2rem); 
     margin: 0;
     white-space: nowrap;
     overflow: hidden;
-    text-overflow: ellipsis; /* Многоточие если не помещается */
-    flex-shrink: 1; /* Может сжиматься при необходимости */
+    text-overflow: ellipsis; 
+    flex-shrink: 1; 
 }
 
 /* Меню */
@@ -70,7 +66,7 @@ header {
 
 .menu-list {
     display: flex;
-    gap: clamp(15px, 3vw, 35px); /* Адаптивные отступы */
+    gap: clamp(15px, 3vw, 35px); 
     padding: 0;
     margin: 0;
     flex-wrap: wrap;
@@ -86,12 +82,11 @@ a {
     text-decoration: none;
     color: #000;
     font-weight: 400;
-    font-size: clamp(1rem, 1.5vw, 1.5rem); /* Адаптивный размер шрифта */
+    font-size: clamp(1rem, 1.5vw, 1.5rem); 
     transition: color 0.3s ease;
     white-space: nowrap;
 }
 
-/* Интерактивность */
 a:hover {
     color: #fff;
 }
@@ -100,7 +95,7 @@ a:hover {
     transform: scale(1.05);
 }
 
-/* Адаптивность для планшетов */
+
 @media (max-width: 1024px) {
     .header-inner {
         gap: 20px;
@@ -117,7 +112,7 @@ a:hover {
     }
 }
 
-/* Адаптивность для мобильных */
+
 @media (max-width: 768px) {
     .header-inner {
         flex-direction: column;
@@ -133,7 +128,7 @@ a:hover {
     }
     
     .name {
-        white-space: normal; /* Разрешаем перенос на мобильных */
+        white-space: normal; 
         text-overflow: clip;
     }
     
@@ -147,7 +142,7 @@ a:hover {
     }
 }
 
-/* Для очень маленьких экранов */
+
 @media (max-width: 480px) {
     .header-left {
         flex-direction: column;
@@ -163,15 +158,13 @@ a:hover {
     }
 }
 
-/* Защита от очень больших экранов */
+
 @media (min-width: 2000px) {
     .container {
         max-width: 1900px;
     }
 }
 
-
-/* Общие стили для всего документа */
 html, body {
     font-family: "Cormorant Infant", serif;
     margin: 0;
@@ -184,19 +177,18 @@ body {
     min-height: 100vh;
 }
 
-/* Основной контент - занимает все доступное пространство */
 main {
     flex: 1 0 auto;
 }
 
-/* Стили для футера */
+
 footer {
     background-color: #CBE8FF;
     padding: 50px 0;
     border-top-left-radius: 150px;
     border-top-right-radius: 150px;
-    flex-shrink: 0; /* Не сжимается */
-    margin-top: auto; /* Прижимает к низу */
+    flex-shrink: 0; 
+    margin-top: auto; 
 }
 
 .footer-content {
@@ -419,9 +411,7 @@ footer {
     transition: all 0.5s;
 
 }
-.search-container:hover {
-   border-color: #BE43C5;
-}
+
 
 
 .page-search{
