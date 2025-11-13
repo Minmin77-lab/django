@@ -732,3 +732,62 @@ footer {
 ::placeholder{
     font-size: 18px;
 }
+
+
+.search-input-wrapper {
+    position: relative;
+    display: inline-block;
+    width: 85%;
+}
+
+.recent-searches-dropdown {
+    position: absolute;
+    top: 100%;
+    left: 13%;
+    right: 0;
+    background: white;
+    border: 1px solid #ddd;
+    border-top: none;
+    z-index: 1000;
+    max-height: 300px;
+    overflow-y: auto;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    display: none;
+}
+
+.search-input:focus + .recent-searches-dropdown,
+.search-input:active + .recent-searches-dropdown {
+    display: block;
+}
+
+.recent-searches-section {
+    border-bottom: 1px solid #eee;
+}
+
+.recent-searches-section:last-child {
+    border-bottom: none;
+}
+
+.recent-searches-title {
+    padding: 8px 12px;
+    font-size: 12px;
+    color: #666;
+    background-color: #f9f9f9;
+}
+
+.recent-search-item {
+    padding: 10px 12px;
+    cursor: pointer;
+    border-bottom: 1px solid #eee;
+    display: block;
+    text-decoration: none;
+    color: inherit;
+}
+
+.recent-search-item:hover {
+    background-color: #BE43C5;
+}
+
+.recent-search-item:last-child {
+    border-bottom: none;
+}

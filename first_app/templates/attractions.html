@@ -7,7 +7,19 @@
         <h1 class="page-title">Аттракционы</h1>
         <form class="search" action="{% url 'attractions' %}" method="get">
             <div class="search-container">
-                <input class="search-input" type="text" name="query" value="{{ search_query }}" placeholder="Поиск по названию или сотруднику...">
+                <div class="search-input-wrapper">
+                    <input class="search-input" type="text" name="query" value="{{ search_query }}" placeholder="Поиск по названию или сотруднику..." autocomplete="off">
+                    {% if recent_searches %}
+                    <div class="recent-searches-dropdown">
+                        <div class="recent-searches-section">
+                            <div class="recent-searches-title">Недавние поиски:</div>
+                            {% for recent in recent_searches %}
+                            <a href="{% url 'attractions' %}?query={{ recent|urlencode }}" class="recent-search-item">{{ recent }}</a>
+                            {% endfor %}
+                        </div>
+                    </div>
+                    {% endif %}
+                </div>
                 <button type="submit" class="search-button">Найти</button> 
             </div>
             <img src="{% static 'images/add.svg' %}" alt="добавить" class="add">
@@ -58,4 +70,5 @@
         {% endfor %}
     </section>
 </div>
+
 {%endblock%}

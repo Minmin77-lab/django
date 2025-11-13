@@ -1,6 +1,22 @@
 from django.db import models
 from django.utils import timezone
 from datetime import timedelta
+from django.contrib.auth.models import User
+
+class SearchHistory(models.Model):
+    query = models.CharField(max_length=255)
+    search_date = models.DateTimeField(auto_now_add=True)
+    search_type = models.CharField(max_length=20, choices=[
+        ('users', 'Users'),
+        ('tickets', 'Tickets'),
+        ('staff', 'Staff'),
+        ('attractions', 'Attractions')
+    ])
+    user = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True)
+
+    class Meta:
+        ordering = ['-search_date']
+
 
 class Users(models.Model):
     name = models.CharField(verbose_name='Имя', max_length=20)
