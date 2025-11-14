@@ -5,22 +5,27 @@
 <div class="container">
     <section class="page-search">
         <h1 class="page-title">Аттракционы</h1>
-        <form class="search" action="{% url 'attractions' %}" method="get">
+        
+        <form class="search" action="{% url 'attractions' %}" method="get" id="search-form">
             <div class="search-container">
                 <div class="search-input-wrapper">
-                    <input class="search-input" type="text" name="query" value="{{ search_query }}" placeholder="Поиск по названию или сотруднику..." autocomplete="off">
+                    <input class="search-input" type="text" name="query" value="{{ search_query }}" placeholder="Поиск по названию или сотруднику..." autocomplete="off"
+                           id="search-input"
+                           onfocus="document.getElementById('search-history').style.display='block'">
                     {% if recent_searches %}
-                    <div class="recent-searches-dropdown">
+                    <div class="recent-searches-dropdown" id="search-history" onblur="setTimeout(() => { this.style.display='none' }, 200)">
                         <div class="recent-searches-section">
                             <div class="recent-searches-title">Недавние поиски:</div>
                             {% for recent in recent_searches %}
-                            <a href="{% url 'attractions' %}?query={{ recent|urlencode }}" class="recent-search-item">{{ recent }}</a>
+                            <div class="recent-search-item" onclick="document.getElementById('search-input').value = '{{ recent }}'; document.getElementById('search-form').submit();">
+                                {{ recent }}
+                            </div>
                             {% endfor %}
                         </div>
                     </div>
                     {% endif %}
                 </div>
-                <button type="submit" class="search-button">Найти</button> 
+                <button type="submit" class="search-button">Найти</button>
             </div>
             <img src="{% static 'images/add.svg' %}" alt="добавить" class="add">
         </form>
@@ -32,6 +37,7 @@
         </div>
         {% endif %}
     </section>
+
     <section class="attractions-menu">
         {% for attraction in attractions_list %} 
         <div class="block">
@@ -60,7 +66,7 @@
             </a>
         </div>
         {% empty %}
-        <p>
+        <p class="no-results">
             {% if search_query %}
             Аттракционы по запросу "{{ search_query }}" не найдены.
             {% else %}
@@ -70,5 +76,4 @@
         {% endfor %}
     </section>
 </div>
-
 {%endblock%}

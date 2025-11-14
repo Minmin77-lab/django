@@ -5,16 +5,20 @@
 <div class="container">
     <section class="page-search">
         <h1 class="page-title">Пользователи</h1>
-        <form class="search" action="{% url 'users' %}" method="get">
+        <form class="search" action="{% url 'users' %}" method="get" id="search-form">
             <div class="search-container">
                 <div class="search-input-wrapper">
-                    <input class="search-input" type="text" name="query" value="{{ search_query }}" placeholder="Поиск по имени, фамилии, email..." autocomplete="off">
+                    <input class="search-input" type="text" name="query" value="{{ search_query }}" placeholder="Поиск по имени, фамилии, email..." autocomplete="off"
+                           id="search-input"
+                           onfocus="document.getElementById('search-history').style.display='block'">
                     {% if recent_searches %}
-                    <div class="recent-searches-dropdown">
+                    <div class="recent-searches-dropdown" id="search-history" onblur="setTimeout(() => { this.style.display='none' }, 200)">
                         <div class="recent-searches-section">
                             <div class="recent-searches-title">Недавние поиски:</div>
                             {% for recent in recent_searches %}
-                            <a href="{% url 'users' %}?query={{ recent|urlencode }}" class="recent-search-item">{{ recent }}</a>
+                            <div class="recent-search-item" onclick="document.getElementById('search-input').value = '{{ recent }}'; document.getElementById('search-form').submit();">
+                                {{ recent }}
+                            </div>
                             {% endfor %}
                         </div>
                     </div>

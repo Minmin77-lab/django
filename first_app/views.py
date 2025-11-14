@@ -1,40 +1,40 @@
 from django.shortcuts import render, get_object_or_404
 from django.db.models import Q
-from .models import Users, Staff, Attractions, Tickets, TicketTypes, SearchHistory
+from .models import Users, Staff, Attractions, Tickets, TicketTypes
 
-def save_search_history(query, search_type, user):
+def save_search_history(request, query, search_type):
     if query.strip():
-        SearchHistory.objects.create(
-            query=query,
-            search_type=search_type,
-            user=user if user.is_authenticated else None
-        )
+        search_history = request.session.get('search_history', {})
+        
+        if search_type not in search_history:
+            search_history[search_type] = []
+        
+        if query in search_history[search_type]:
+            search_history[search_type].remove(query)
+        search_history[search_type].insert(0, query)
 
-def get_recent_searches(user, search_type, limit=5):
-    if user.is_authenticated:
-        recent = SearchHistory.objects.filter(
-            user=user,
-            search_type=search_type
-        ).values_list('query', flat=True).distinct()[:limit]
-    else:
-        recent = SearchHistory.objects.filter(
-            search_type=search_type
-        ).values_list('query', flat=True).distinct()[:limit]
-    return list(recent)
+        search_history[search_type] = search_history[search_type][:5]
+
+        request.session['search_history'] = search_history
+        request.session.modified = True
+
+def get_recent_searches(request, search_type, limit=5):
+    search_history = request.session.get('search_history', {})
+    return search_history.get(search_type, [])[:limit]
 
 def attractions(request):
     query = request.GET.get('query', '').strip()
     all_attractions = Attractions.objects.select_related('staff').all()
     
     if query:
-        save_search_history(query, 'attractions', request.user)
+        save_search_history(request, query, 'attractions')
         all_attractions = all_attractions.filter(
             Q(name__icontains=query) |
             Q(staff__name__icontains=query) |
             Q(staff__surname__icontains=query)
         )
     
-    recent_searches = get_recent_searches(request.user, 'attractions')
+    recent_searches = get_recent_searches(request, 'attractions')
     
     return render(request, 'attractions.html', {
         'attractions_list': all_attractions,
@@ -53,7 +53,7 @@ def tickets(request):
         all_tickets = all_tickets.filter(ticket_type__name__in=selected_types)
     
     if query:
-        save_search_history(query, 'tickets', request.user)
+        save_search_history(request, query, 'tickets')
         all_tickets = all_tickets.filter(
             Q(user__name__icontains=query) |
             Q(user__surname__icontains=query) |
@@ -61,7 +61,7 @@ def tickets(request):
             Q(id__icontains=query)
         )
     
-    recent_searches = get_recent_searches(request.user, 'tickets')
+    recent_searches = get_recent_searches(request, 'tickets')
     
     context = {
         'tickets_list': all_tickets,
@@ -78,7 +78,7 @@ def users(request):
     all_users = Users.objects.all().order_by('surname', 'name')
     
     if query:
-        save_search_history(query, 'users', request.user)
+        save_search_history(request, query, 'users')
         all_users = all_users.filter(
             Q(name__icontains=query) |
             Q(surname__icontains=query) |
@@ -86,7 +86,7 @@ def users(request):
             Q(phone_number__icontains=query)
         )
     
-    recent_searches = get_recent_searches(request.user, 'users')
+    recent_searches = get_recent_searches(request, 'users')
     
     return render(request, 'users.html', {
         'users_list': all_users,
@@ -99,7 +99,7 @@ def staff(request):
     all_staff = Staff.objects.all().order_by('surname', 'name')
     
     if query:
-        save_search_history(query, 'staff', request.user)
+        save_search_history(request, query, 'staff')
         all_staff = all_staff.filter(
             Q(name__icontains=query) |
             Q(surname__icontains=query) |
@@ -107,7 +107,7 @@ def staff(request):
             Q(phone_number__icontains=query)
         )
     
-    recent_searches = get_recent_searches(request.user, 'staff')
+    recent_searches = get_recent_searches(request, 'staff')
     
     return render(request, 'staff.html', {
         'staff_list': all_staff,
