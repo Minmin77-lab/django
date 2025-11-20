@@ -40,23 +40,23 @@ header {
     align-items: center;
     gap: 20px;
     flex-shrink: 0;
-    min-width: 0; 
+    min-width: 0;
 }
 
 .logo {
     height: 80px;
     width: 80px;
     transition: transform 0.3s ease;
-    flex-shrink: 0; 
+    flex-shrink: 0;
 }
 
 .name {
-    font-size: clamp(1.2rem, 2.5vw, 2rem); 
+    font-size: clamp(1.2rem, 2.5vw, 2rem);
     margin: 0;
     white-space: nowrap;
     overflow: hidden;
-    text-overflow: ellipsis; 
-    flex-shrink: 1; 
+    text-overflow: ellipsis;
+    flex-shrink: 1;
 }
 
 /* Меню */
@@ -66,7 +66,7 @@ header {
 
 .menu-list {
     display: flex;
-    gap: clamp(15px, 3vw, 35px); 
+    gap: clamp(15px, 3vw, 35px);
     padding: 0;
     margin: 0;
     flex-wrap: wrap;
@@ -82,7 +82,7 @@ a {
     text-decoration: none;
     color: #000;
     font-weight: 400;
-    font-size: clamp(1rem, 1.5vw, 1.5rem); 
+    font-size: clamp(1rem, 1.5vw, 1.5rem);
     transition: color 0.3s ease;
     white-space: nowrap;
 }
@@ -101,12 +101,12 @@ a:hover {
         gap: 20px;
         min-height: 120px;
     }
-    
+
     .logo {
         height: 60px;
         width: 60px;
     }
-    
+
     .container {
         max-width: 98%;
     }
@@ -121,21 +121,21 @@ a:hover {
         padding: 20px 0;
         min-height: auto;
     }
-    
+
     .header-left {
         justify-content: center;
         width: 100%;
     }
-    
+
     .name {
-        white-space: normal; 
+        white-space: normal;
         text-overflow: clip;
     }
-    
+
     .menu-list {
         justify-content: center;
     }
-    
+
     header {
         border-bottom-left-radius: 80px;
         border-bottom-right-radius: 80px;
@@ -148,11 +148,11 @@ a:hover {
         flex-direction: column;
         gap: 10px;
     }
-    
+
     .menu-list {
         gap: 10px;
     }
-    
+
     .container {
         padding: 0 15px;
     }
@@ -187,8 +187,8 @@ footer {
     padding: 50px 0;
     border-top-left-radius: 150px;
     border-top-right-radius: 150px;
-    flex-shrink: 0; 
-    margin-top: auto; 
+    flex-shrink: 0;
+    margin-top: auto;
 }
 
 .footer-content {
@@ -257,7 +257,7 @@ footer {
     footer {
         padding: 40px 0;
     }
-    
+
     .footer-content {
         gap: 30px;
     }
@@ -269,13 +269,13 @@ footer {
         border-top-right-radius: 80px;
         padding: 30px 0;
     }
-    
+
     .footer-content {
         flex-direction: column;
         text-align: center;
         gap: 25px;
     }
-    
+
     .footer-contacts {
         gap: 20px;
     }
@@ -287,12 +287,12 @@ footer {
         border-top-right-radius: 50px;
         padding: 25px 0;
     }
-    
+
     .footer-contacts,
     .footer-menu {
         min-width: 100%;
     }
-    
+
     .footer-menu li {
         margin-bottom: 10px;
     }
@@ -355,7 +355,7 @@ footer {
     .footer-logo {
         min-width: 120px;
     }
-    
+
     .footer-logo-img {
         width: 60px;
         height: 60px;
@@ -368,12 +368,12 @@ footer {
         text-align: center;
         gap: 30px;
     }
-    
+
     .footer-logo {
-        order: -1; 
+        order: -1;
         width: 100%;
     }
-    
+
     .logo-container {
         flex-direction: row;
         justify-content: center;
@@ -386,7 +386,7 @@ footer {
         flex-direction: column;
         gap: 8px;
     }
-    
+
     .footer-logo-img {
         width: 50px;
         height: 50px;
@@ -397,14 +397,14 @@ footer {
     font-size: 65px;
 }
 
-.search{
+.search {
     display: flex;
     justify-content: space-between;
     align-items: center;
     margin-bottom: 30px;
 }
 
-.search-container{
+.search-container {
     position: relative;
     display: inline-block;
     width: 750px;
@@ -414,11 +414,11 @@ footer {
 
 
 
-.page-search{
+.page-search {
     margin-bottom: 35px;
 }
 
-.search-input{
+.search-input {
     color: #F58128;
     margin: 0 10px 0 70px;
     padding: 10px 100px 10px 15px;
@@ -430,16 +430,21 @@ footer {
     outline: none;
     padding-left: 10px;
     caret-color: #F58128;
-    box-sizing: border-box; /* Чтобы padding не увеличивал ширину */
+    box-sizing: border-box;
+    /* Чтобы padding не увеличивал ширину */
     /* Свойства для управления текстом */
-    white-space: nowrap; /* Запрет переноса на новую строку */
-    overflow: hidden; /* Скрываем текст, который не помещается */
-    text-overflow: ellipsis; /* Добавляем многоточие в конце (опционально) */
+    white-space: nowrap;
+    /* Запрет переноса на новую строку */
+    overflow: hidden;
+    /* Скрываем текст, который не помещается */
+    text-overflow: ellipsis;
+    /* Добавляем многоточие в конце (опционально) */
 }
 
 /* Убираем многоточие при фокусе, чтобы видеть весь текст */
 .search-input:focus {
-    text-overflow: clip; /* Или оставьте ellipsis, если хотите многоточие */
+    text-overflow: clip;
+    /* Или оставьте ellipsis, если хотите многоточие */
 }
 
 .search-button {
@@ -453,8 +458,10 @@ footer {
     padding: 10px 20px;
     border-radius: 50px;
     cursor: pointer;
-    font-size: 16px; /* Чтобы текст не переносился */
-    z-index: 2; /* Чтобы кнопка была поверх поля ввода */
+    font-size: 16px;
+    /* Чтобы текст не переносился */
+    z-index: 2;
+    /* Чтобы кнопка была поверх поля ввода */
 }
 
 .search-button:hover {
@@ -464,35 +471,47 @@ footer {
 /* для фильтрации */
 
 .ticket-filters {
-    display: flex;          /* Располагаем элементы в строку */
-    flex-wrap: wrap;        /* Перенос на новую строку если не помещаются */
-    gap: 20px;              /* Расстояние между кнопками */
-    margin: 15px 0 15px 70px;         /* Отступы сверху и снизу */
+    display: flex;
+    /* Располагаем элементы в строку */
+    flex-wrap: wrap;
+    /* Перенос на новую строку если не помещаются */
+    gap: 20px;
+    /* Расстояние между кнопками */
+    margin: 15px 0 15px 70px;
+    /* Отступы сверху и снизу */
 }
 
 .filter-option {
-    display: inline-block;  /* Располагаем контейнеры в строку */
+    display: inline-block;
+    /* Располагаем контейнеры в строку */
 }
 
 /* Скрываем настоящие чекбоксы */
 .hidden-checkbox {
-    display: none; /* Полностью скрываем настоящий чекбокс */
+    display: none;
+    /* Полностью скрываем настоящий чекбокс */
 }
 
 /* Стилизуем labels как кнопки */
 .ticket-btn {
-    display: inline-block; /* Делаем label блочным элементом */
+    display: inline-block;
+    /* Делаем label блочным элементом */
     padding: 10px 24px;
     border: 2px solid #F58128;
     border-radius: 50px;
     background: white;
     color: #F58128;
-    cursor: pointer; /* Курсор-указатель при наведении */
+    cursor: pointer;
+    /* Курсор-указатель при наведении */
     font-size: 20px;
-    font-weight: 500; /* Полужирный текст */
-    transition: all 0.3s ease; /* Плавные анимации для всех свойств */
-    text-align: center; /* Выравнивание текста по центру */
-    min-width: 100px;  /* Минимальная ширина кнопки */
+    font-weight: 500;
+    /* Полужирный текст */
+    transition: all 0.3s ease;
+    /* Плавные анимации для всех свойств */
+    text-align: center;
+    /* Выравнивание текста по центру */
+    min-width: 100px;
+    /* Минимальная ширина кнопки */
 }
 
 /* Состояние при наведении */
@@ -502,42 +521,40 @@ footer {
     color: #ff8c00;
 }
 
-/* Состояние когда чекбокс отмечен */
-.hidden-checkbox:checked + .ticket-btn {
-    background: linear-gradient(to bottom, #ffa500, #ff8c00); /* Оранжевый градиентный фон */
+.hidden-checkbox:checked+.ticket-btn {
+    background: linear-gradient(to bottom, #ffa500, #ff8c00);
     border-color: #F58128;
     color: white;
     box-shadow: 0 2px 8px #F58128;
 }
 
-/* кнопка добавления  */
-.add{
+.add {
     height: 80px;
     width: 80px;
 }
 
-.block{
+.block {
     background-color: #FEEAFE;
     width: 650px;
-    height: 580px;
+    height: auto;
     border-radius: 50px;
     padding-bottom: 20px;
     margin: 40px 0 40px 0;
 
 }
 
-.img-one{
+.img-one {
     width: 650px;
     border-radius: 50px;
-    height:370px;
+    height: 370px;
 }
 
-.name-attraction{
+.name-attraction {
     font-size: 45px;
     margin: 0 0 0 20px;
 }
 
-.red-button{
+.red-button {
     display: flex;
     margin: 20px auto 0 auto;
     gap: 10px;
@@ -548,14 +565,15 @@ footer {
     width: 250px;
 }
 
-.red-button:hover{
+.red-button:hover {
     color: #fff;
 }
-.staff{
+
+.staff {
     margin: 0 0 0 20px;
 }
 
-.attractions-menu{
+.attractions-menu {
     display: grid;
     grid-template-columns: repeat(auto-fill, 670px);
     grid-template-rows: repeat(auto-fill, 670px);
@@ -566,17 +584,17 @@ footer {
     max-width: 1400px;
 }
 
-.tickets-menu{
-    flex-wrap: wrap;  
-    gap: 0 20px; 
+.tickets-menu {
+    flex-wrap: wrap;
+    gap: 0 20px;
     display: grid;
     grid-template-columns: repeat(auto-fill, 500px);
     gap: 0 20px;
     justify-content: center;
     align-items: flex-start;
-} 
+}
 
-.ticket-card{
+.ticket-card {
     background-color: #FEEAFE;
     border-radius: 35px;
     height: 380px;
@@ -586,19 +604,19 @@ footer {
     box-shadow: 0 0 20px #FC84FF;
 }
 
-.card-header{
+.card-header {
     font-size: 35px;
     margin: 0 0 35px 0;
 }
 
-.ticket-info{
+.ticket-info {
     display: flex;
     justify-content: space-between;
     align-items: center;
     margin: 15px 0;
 }
 
-.ticket-type{
+.ticket-type {
     height: 60px;
     width: 220px;
     padding: 10px 0;
@@ -610,14 +628,14 @@ footer {
     margin: 0;
 }
 
-.ticket-id{
+.ticket-id {
     font-size: 30px;
     font-weight: 700;
     color: #1d1010;
     margin: 0;
 }
 
-.details-button{
+.details-button {
     height: 60px;
     width: 180px;
     font-size: 25px;
@@ -629,25 +647,26 @@ footer {
     border-radius: 50px;
     cursor: pointer;
     transition: all 0.3s ease;
-    display: block; /* Делаем блочным элементом */
-    margin: 35px auto 0; 
-        
+    display: block;
+    /* Делаем блочным элементом */
+    margin: 35px auto 0;
+
 }
 
-.details-button:hover{
+.details-button:hover {
     background: transparent;
     color: #BE43C5;
     transform: translateY(-1px);
-    box-shadow: 0 4px 8px #FC84FF;    
+    box-shadow: 0 4px 8px #FC84FF;
 }
 
-.details-text{
+.details-text {
     margin: 0;
 }
 
 /* пользователи */
 
-.user-card{
+.user-card {
     background-color: #D0D1D1;
     height: 250px;
     width: 500px;
@@ -656,43 +675,43 @@ footer {
     margin: 0px auto 35px auto;
 }
 
-.user-header{
+.user-header {
     display: flex;
 }
 
-.profile-img{
+.profile-img {
     margin-right: 30px
 }
 
-.user-name{
+.user-name {
     font-size: 30px;
 }
 
-.user-info{
+.user-info {
     font-size: 25px;
 }
 
-.erl{
+.erl {
     display: flex;
     justify-content: space-between;
 }
 
-.podrobnee{
+.podrobnee {
     height: 60px;
     width: 60px;
 }
 
-.email{
+.email {
     margin-top: 10px;
 }
 
-.regist{
+.regist {
     margin-top: 10px;
 }
 
-.users-menu{
-    flex-wrap: wrap;  
-    gap: 0 20px; 
+.users-menu {
+    flex-wrap: wrap;
+    gap: 0 20px;
     display: grid;
     grid-template-columns: repeat(auto-fill, 500px);
     gap: 0 20px;
@@ -700,7 +719,7 @@ footer {
     align-items: flex-start;
 }
 
-.attraction-block{
+.attraction-block {
     width: 700px;
     /* height: 850px; */
     background-color: #E8F0F6;
@@ -709,27 +728,27 @@ footer {
     padding: 40px;
 }
 
-.attr-text{
+.attr-text {
     font-size: 30px;
     margin: 25px 0 35px 10px;
 }
 
-.attr-info{
+.attr-info {
     margin-left: 25px;
     color: #BE43C5;
 }
 
-.hui{
+.hui {
     margin-top: 0;
 }
 
-.profile-img{
+.profile-img {
     width: 80px;
     height: 80px;
     border-radius: 50px;
 }
 
-::placeholder{
+::placeholder {
     font-size: 18px;
 }
 
@@ -751,12 +770,12 @@ footer {
     z-index: 1000;
     max-height: 300px;
     overflow-y: auto;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     display: none;
 }
 
-.search-input:focus + .recent-searches-dropdown,
-.search-input:active + .recent-searches-dropdown {
+.search-input:focus+.recent-searches-dropdown,
+.search-input:active+.recent-searches-dropdown {
     display: block;
 }
 
@@ -790,4 +809,417 @@ footer {
 
 .recent-search-item:last-child {
     border-bottom: none;
+}
+
+@media (max-width: 1510px) {
+    .attractions-menu {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, 600px);
+        grid-template-rows: repeat(auto-fill, 600px);
+        gap: 0 20px;
+        padding-left: 30px;
+        margin: 0 auto;
+        justify-items: center;
+        max-width: 1400px;
+    }
+
+    .block {
+        width: 500px;
+        height: auto;
+    }
+
+    .img-one {
+        width: 100%;
+        height: 300px;
+    }
+
+    .attractions-menu {
+        max-width: 1200px;
+        margin: 0 auto;
+        grid-template-columns: repeat(auto-fill, 570px);
+        grid-template-rows: repeat(auto-fill, 600px);
+    }
+}
+
+@media (max-width: 1295px) {
+    .attractions-menu {
+        max-width: 1050px;
+        margin: 0 auto;
+        grid-template-columns: repeat(auto-fill, 500px);
+        grid-template-rows: repeat(auto-fill, 600px);
+    }
+
+}
+
+@media (max-width: 1024px) {
+    .page-title {
+        font-size: 50px;
+    }
+
+    .search-container {
+        width: 600px;
+    }
+
+    .search-input {
+        width: 550px;
+        font-size: 22px;
+    }
+
+    .attractions-menu {
+        max-width: 500px;
+        margin: 0 auto;
+        grid-template-columns: repeat(auto-fill, 470px);
+        grid-template-rows: repeat(auto-fill, 600px);
+    }
+
+
+    .block {
+        width: 550px;
+        height: auto;
+    }
+
+    .header-inner {
+        padding: 25px;
+    }
+
+    .img-one {
+        width: 550px;
+        height: 320px;
+    }
+
+    .name-attraction {
+        font-size: 38px;
+    }
+
+    .attraction-block {
+        width: 600px;
+        padding: 30px;
+    }
+
+    .attr-text {
+        font-size: 26px;
+    }
+}
+
+@media (max-width: 768px) {
+    .page-title {
+        font-size: 40px;
+        text-align: center;
+    }
+
+    .search {
+        flex-direction: column;
+        gap: 20px;
+        align-items: center;
+    }
+
+    .search-container {
+        width: 100%;
+        max-width: 500px;
+    }
+
+    .search-input {
+        width: 100%;
+        max-width: 450px;
+        margin: 0 auto;
+        font-size: 18px;
+        height: 50px;
+    }
+
+    .search-input-wrapper {
+        width: 100%;
+    }
+
+    .recent-searches-dropdown {
+        left: 0;
+        right: 0;
+        margin: 0 auto;
+        width: calc(100% - 40px);
+    }
+
+    .attractions-menu {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto;
+        padding-left: 0;
+        justify-items: center;
+    }
+
+    .block {
+        width: 90%;
+        max-width: 500px;
+        height: auto;
+        min-height: 500px;
+        margin: 20px 0;
+    }
+
+    .img-one {
+        width: 100%;
+        height: 280px;
+        border-radius: 40px 40px 0 0;
+    }
+
+    .name-attraction {
+        font-size: 32px;
+        text-align: center;
+        margin: 15px 0;
+    }
+
+    .staff {
+        text-align: center;
+        margin: 10px 0;
+    }
+
+    .tickets-menu,
+    .users-menu {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+
+    .ticket-card,
+    .user-card {
+        width: 90%;
+        max-width: 400px;
+        margin: 0 auto 25px;
+    }
+
+    .attraction-block {
+        width: 90%;
+        max-width: 500px;
+        border-radius: 40px;
+        padding: 25px;
+    }
+
+    .attr-text {
+        font-size: 22px;
+        margin: 20px 0;
+        text-align: center;
+    }
+
+    .attr-info {
+        margin-left: 0;
+        text-align: center;
+    }
+
+    .ticket-filters {
+        margin: 15px 0;
+        justify-content: center;
+    }
+
+    .podrobnee {
+        width: 40px;
+        margin: 10px;
+    }
+
+    .regist {
+        margin-bottom: 0;
+    }
+
+    .erl {
+        display: flex;
+        gap: 10px;
+    }
+
+    .user-card {
+        height: auto;
+        max-width: 500px;
+        width: auto;
+    }
+
+    .search-button {
+        position: absolute;
+        right: 60px;
+        top: 50%;
+        transform: translateY(-50%);
+        background-color: #F58128;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 50px;
+        cursor: pointer;
+        font-size: 16px;
+        z-index: 2;
+    }
+
+    .ticket-btn {
+        font-size: 16px;
+        padding: 8px 16px;
+        min-width: 80px;
+    }
+}
+
+@media (max-width: 480px) {
+    .page-title {
+        font-size: 32px;
+    }
+
+    .search-input {
+        font-size: 16px;
+        height: 45px;
+        padding: 10px 80px 10px 15px;
+    }
+
+    .search-button {
+        padding: 8px 15px;
+        font-size: 14px;
+    }
+
+    .add {
+        height: 60px;
+        width: 60px;
+    }
+
+    .block {
+        width: 95%;
+        min-height: 450px;
+        border-radius: 30px;
+    }
+
+    .img-one {
+        height: 220px;
+        border-radius: 30px 30px 0 0;
+    }
+
+    .name-attraction {
+        font-size: 28px;
+    }
+
+    .red-button {
+        width: 200px;
+        padding: 10px;
+    }
+
+    .red-text {
+        font-size: 18px;
+    }
+
+    .ticket-card,
+    .user-card {
+        width: 95%;
+        padding: 20px;
+    }
+
+    .card-header {
+        font-size: 28px;
+        margin-bottom: 20px;
+        text-align: center;
+    }
+
+    .ticket-info {
+        flex-direction: column;
+        gap: 10px;
+        text-align: center;
+    }
+
+    .ticket-type {
+        width: 100%;
+        max-width: 200px;
+        font-size: 24px;
+    }
+
+    .user-header {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .profile-img {
+        margin-right: 0;
+        margin-bottom: 15px;
+    }
+
+    .user-name {
+        font-size: 26px;
+    }
+
+    .user-info {
+        font-size: 20px;
+    }
+
+    .erl {
+        flex-direction: column;
+        align-items: center;
+        gap: 15px;
+    }
+
+    .attraction-block {
+        width: 95%;
+        border-radius: 30px;
+        padding: 20px;
+    }
+
+    .attr-text {
+        font-size: 20px;
+    }
+
+    .ticket-filters {
+        gap: 10px;
+    }
+
+    .search-button {
+        right: 5px;
+    }
+
+    .ticket-btn {
+        font-size: 14px;
+        padding: 6px 12px;
+        min-width: 70px;
+    }
+
+    .details-button {
+        width: 160px;
+        font-size: 20px;
+    }
+}
+
+@media (max-width: 360px) {
+    .page-title {
+        font-size: 28px;
+    }
+
+    .search-input {
+        font-size: 14px;
+        height: 40px;
+    }
+
+    .search-button {
+        padding: 6px 12px;
+        font-size: 12px;
+    }
+
+    .block {
+        min-height: 400px;
+    }
+
+    .img-one {
+        height: 180px;
+    }
+
+    .name-attraction {
+        font-size: 24px;
+    }
+
+    .ticket-card,
+    .user-card {
+        padding: 15px;
+    }
+
+    .card-header {
+        font-size: 24px;
+    }
+
+    .ticket-type {
+        font-size: 20px;
+    }
+
+    .user-name {
+        font-size: 22px;
+    }
+
+    .user-info {
+        font-size: 18px;
+    }
+
+    .attr-text {
+        font-size: 18px;
+    }
 }
